@@ -303,7 +303,8 @@ const Vehicles = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  view: state.view
+  view: state.view,
+  vehicle: state.vehicle
 });
 
 export default connect(mapStateToProps, { openNavbar, openFooter })(Vehicles);

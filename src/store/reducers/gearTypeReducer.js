@@ -1,7 +1,8 @@
 import { GET_GEARTYPE, GET_GEARTYPES, ADD_GEARTYPE, UPDATE_GEARTYPE, DELETE_GEARTYPE } from '../actions/types';
 
 const initialState = {
-    gearTypes: []
+    gearTypes: [],
+    gearType: {}
 }
 
 export default function (state = initialState, action) {
@@ -9,11 +10,11 @@ export default function (state = initialState, action) {
         case GET_GEARTYPES:
             return {
                 ...state,
-                gearTypes: action.payload,
-                loading: false
+                gearTypes: action.payload
             };
         case GET_GEARTYPE:
             return {
+                ...state,
                 gearType: action.payload
             };
         case ADD_GEARTYPE:
@@ -25,7 +26,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 gearTypes: state.gearTypes.map((gearType) => {
-                    if (action.payload.id === gearType.ID) {
+                    if (action.payload.gearType.id === gearType.id) {
                         gearType = action.payload.gearType;
                     }
                     return gearType;
@@ -34,7 +35,7 @@ export default function (state = initialState, action) {
         case DELETE_GEARTYPE:
             return {
                 ...state,
-                gearTypes: state.gearTypes.filter(gearType => gearType.ID !== action.payload)
+                gearTypes: state.gearTypes.filter(gearType => gearType.id !== action.payload)
             };
 
         default:

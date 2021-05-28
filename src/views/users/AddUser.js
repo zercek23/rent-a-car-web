@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     CButton,
     CCard,
@@ -33,15 +33,23 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { DocsLink } from 'src/reusable'
+import { connect } from 'react-redux';
+import { RegisterUser } from 'src/store/actions/authActions';
+import { Redirect } from "react-router-dom";
 
-const AddUser = () => {
+const AddUser = (props) => {
+
+    const [employee, setEmployee] = useState({});
 
     const onChange = (e) => {
-
+        setEmployee({...employee ,[e.target.name]: e.target.value});
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log(employee);
+        props.RegisterUser(employee);
+        props.history.push("/users");
     }
 
     return (
@@ -58,7 +66,7 @@ const AddUser = () => {
                                 <CCol xs="12">
                                     <CFormGroup>
                                         <CLabel htmlFor="name">Ad</CLabel>
-                                        <CInput id="name" type="text" placeholder="Ad" required onChange={onChange} />
+                                        <CInput type="text" placeholder="Ad" required name="firstName" onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
@@ -66,7 +74,7 @@ const AddUser = () => {
                                 <CCol xs="12">
                                     <CFormGroup>
                                         <CLabel htmlFor="name">Soyad</CLabel>
-                                        <CInput id="lastName" type="text" placeholder="Soyad" required onChange={onChange} />
+                                        <CInput type="text" placeholder="Soyad" name="lastName" required onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
@@ -74,7 +82,7 @@ const AddUser = () => {
                                 <CCol xs="12">
                                     <CFormGroup>
                                         <CLabel htmlFor="name">E-posta</CLabel>
-                                        <CInput id="e-mail" type="text" placeholder="E-posta" required onChange={onChange} />
+                                        <CInput type="text" placeholder="E-posta" name="email" required onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
@@ -82,7 +90,7 @@ const AddUser = () => {
                                 <CCol xs="12">
                                     <CFormGroup>
                                         <CLabel htmlFor="name">Şifre</CLabel>
-                                        <CInput id="password" type="password" placeholder="Şifre" required onChange={onChange} />
+                                        <CInput type="password" placeholder="Şifre" name="password" required onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
@@ -97,4 +105,10 @@ const AddUser = () => {
     )
 }
 
-export default AddUser
+const mapStateToProps = (state) => ({
+    employee: state.employee,
+    auth: state.auth
+});
+
+export default connect(mapStateToProps, { RegisterUser })(AddUser);
+

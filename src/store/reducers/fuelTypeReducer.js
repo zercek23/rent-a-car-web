@@ -1,7 +1,8 @@
 import { GET_FUELTYPE, GET_FUELTYPES, ADD_FUELTYPE, UPDATE_FUELTYPE, DELETE_FUELTYPE } from '../actions/types';
 
 const initialState = {
-    fuelTypes: []
+    fuelTypes: [],
+    fuelType: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_FUELTYPE:
             return {
+                ...state,
                 fuelType: action.payload
             };
         case ADD_FUELTYPE:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 fuelTypes: state.fuelTypes.map((fuelType) => {
-                    if (action.payload.id === fuelType.ID) {
+                    if (action.payload.fuelType.id === fuelType.id) {
                         fuelType = action.payload.fuelType;
                     }
                     return fuelType;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_FUELTYPE:
             return {
                 ...state,
-                fuelTypes: state.fuelTypes.filter(fuelType => fuelType.ID !== action.payload)
+                fuelTypes: state.fuelTypes.filter(fuelType => fuelType.id !== action.payload)
             };
 
         default:

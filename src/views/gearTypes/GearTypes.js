@@ -18,9 +18,9 @@ import {
   CDropdownToggle
 } from '@coreui/react'
 
-import usersData from './UsersData'
+
 import { connect } from 'react-redux';
-import { getEmployees, deleteEmployee } from '../../store/actions/employeeActions';
+import { getGearTypes, deleteGearType } from '../../store/actions/gearTypeActions';
 
 const getBadge = status => {
   switch (status) {
@@ -34,16 +34,8 @@ const getBadge = status => {
 
 const fields = [
   {
-    key: 'firstName',
-    label: 'Adı'
-  },
-  {
-    key: 'lastName',
-    label: 'Soyadı'
-  },
-  {
-    key: 'email',
-    label: 'E-posta'
+    key: 'name',
+    label: 'Vites Tipi'
   },
   {
     key: 'options',
@@ -51,58 +43,54 @@ const fields = [
   },
 ]
 
-
-const Users = (props) => {
+const GearTypes = (props) => {
   const history = useHistory()
   const queryPage = useLocation().search.match(/page=([0-9]+)/, '')
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1)
   const [page, setPage] = useState(currentPage)
 
-  const [employees, setEmployees] = useState([]);
-
   const pageChange = newPage => {
-    currentPage !== newPage && history.push(`/users?page=${newPage}`)
+    currentPage !== newPage && history.push(`/gearTypes?page=${newPage}`)
   }
 
   useEffect(() => {
-    props.getEmployees();
+    props.getGearTypes();
 
     currentPage !== page && setPage(currentPage)
   }, [currentPage, page])
 
   useEffect(() => {
-    if (props.employee.employees) {
-      console.log(props.employee.employees);
+    if (props.gearType.gearTypes) {
     }
 
-  }, [props.employee.employees])
+  }, [props.gearType.gearTypes])
 
   const deleteById = (id) => {
-    props.deleteEmployee(id);
+    props.deleteGearType(id);
   }
 
   return (
     <div>
       <CRow>
         <CCol col="3" sm="3" md="3" xl="3" className="mb-3 mb-xl-0">
-          <CButton block color="primary" to="add-user">Kullanıcı Ekle</CButton>
+          <CButton block color="primary" to="add-gearType">Vites Tipi Ekle</CButton>
         </CCol>
       </CRow>
       <CRow>
         <CCol>
           <CCard>
             <CCardHeader>
-              Kullanıcılar
+              Vites Tipleri
         </CCardHeader>
             <CCardBody>
               <CDataTable
-                items={props.employee.employees}
+                items={props.gearType.gearTypes}
                 fields={fields}
                 hover
                 striped
                 bordered
                 size="sm"
-                // onRowClick={(item) => history.push(`/edit-user/${item.id}`)}
+                // onRowClick={(item) => history.push(`/edit-gearType/${item.id}`)}
                 itemsPerPage={10}
                 pagination
                 scopedSlots={{
@@ -114,7 +102,7 @@ const Users = (props) => {
                             Seçenekler
                           </CDropdownToggle>
                           <CDropdownMenu>
-                            <CButton block color="warning" to={`/edit-user/${item.id}`}>Düzenle</CButton>
+                            <CButton block color="warning" to={`/edit-gearType/${item.id}`}>Düzenle</CButton>
                             <CButton block color="danger" onClick={() => deleteById(item.id)}>Sil</CButton>
                           </CDropdownMenu>
                         </CDropdown>
@@ -132,7 +120,7 @@ const Users = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  employee: state.employee
+  gearType: state.gearType
 });
 
-export default connect(mapStateToProps, { getEmployees, deleteEmployee })(Users);
+export default connect(mapStateToProps, { getGearTypes, deleteGearType })(GearTypes);

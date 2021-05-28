@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     CButton,
     CCard,
@@ -34,27 +34,38 @@ import {
 import CIcon from '@coreui/icons-react'
 import { DocsLink } from 'src/reusable'
 import { connect } from 'react-redux';
-import { getUser } from '../../store/actions/authActions'
+import { getEmployee, updateEmployee } from '../../store/actions/employeeActions';
 
 const EditUser = (props) => {
 
-    const [user, setUser] = useState({});
+    const [employee, setEmployee] = useState({});
     // const user2 = usersData.find( user => user.id.toString() === match.params.id)
-    const userDetails = user ? Object.entries(user) : 
-      [['id', (<span><CIcon className="text-muted" name="cui-icon-ban" /> Not found</span>)]]
+    const userDetails = employee ? Object.entries(employee) :
+        [['id', (<span><CIcon className="text-muted" name="cui-icon-ban" /> Not found</span>)]]
 
     useEffect(() => {
-        props.getUser(props.match.params.id);
-        setUser(props.auth.getUser);
-        console.log(props.auth.getUser);
+        props.getEmployee(props.match.params.id);
     }, [])
 
-    const onChange = (e) => {
+    useEffect(() => {
+        if (props.employee.employee) {
+            setEmployee(props.employee.employee);
+        }
+    }, [props.employee.employee])
 
+    const onChange = (e) => {
+        setEmployee({...employee ,[e.target.name]: e.target.value});
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log(employee);
+        props.updateEmployee(employee);
+        props.history.push("/users");
+    }
+
+    const resetForm = () => {
+        setEmployee({});
     }
 
     return (
@@ -71,7 +82,7 @@ const EditUser = (props) => {
                                 <CCol xs="12">
                                     <CFormGroup>
                                         <CLabel htmlFor="name">Ad</CLabel>
-                                        <CInput id="name" type="text" placeholder="Ad" required onChange={onChange} />
+                                        <CInput type="text" name="firstName" placeholder="Ad" required value={employee.firstName} onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
@@ -79,7 +90,7 @@ const EditUser = (props) => {
                                 <CCol xs="12">
                                     <CFormGroup>
                                         <CLabel htmlFor="name">Soyad</CLabel>
-                                        <CInput id="lastName" type="text" placeholder="Soyad" required onChange={onChange} />
+                                        <CInput type="text" name="lastName" placeholder="Soyad" required value={employee.lastName} onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
@@ -87,20 +98,12 @@ const EditUser = (props) => {
                                 <CCol xs="12">
                                     <CFormGroup>
                                         <CLabel htmlFor="name">E-posta</CLabel>
-                                        <CInput id="e-mail" type="text" placeholder="E-posta" required onChange={onChange} />
+                                        <CInput type="text" name="email" placeholder="E-posta" required value={employee.email} onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
-                            <CRow>
-                                <CCol xs="12">
-                                    <CFormGroup>
-                                        <CLabel htmlFor="name">Şifre</CLabel>
-                                        <CInput id="password" type="password" placeholder="Şifre" required onChange={onChange} />
-                                    </CFormGroup>
-                                </CCol>
-                            </CRow>
-                            <CButton type="submit" size="sm" color="primary"><CIcon name="cil-scrubber" /> Submit</CButton>
-                            <CButton type="reset" size="sm" color="danger"><CIcon name="cil-ban" /> Reset</CButton>
+                            <CButton type="submit" size="sm" color="primary"><CIcon name="cil-scrubber" /> Kaydet</CButton>
+                            <CButton type="reset" size="sm" color="danger" onClick={resetForm}><CIcon name="cil-ban" /> Resetle</CButton>
                         </CCardBody>
                     </CCard>
                 </CCol>
@@ -111,7 +114,7 @@ const EditUser = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+    employee: state.employee
 });
 
-export default connect(mapStateToProps, { getUser })(EditUser);
+export default connect(mapStateToProps, { getEmployee, updateEmployee })(EditUser);

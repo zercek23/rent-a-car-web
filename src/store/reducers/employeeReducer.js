@@ -1,7 +1,8 @@
 import { GET_EMPLOYEE, GET_EMPLOYEES, ADD_EMPLOYEE, UPDATE_EMPLOYEE, DELETE_EMPLOYEE } from '../actions/types';
 
 const initialState = {
-    employees: []
+    employees: [],
+    employee: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_EMPLOYEE:
             return {
+                ...state,
                 employee: action.payload
             };
         case ADD_EMPLOYEE:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 employees: state.employees.map((employee) => {
-                    if (action.payload.id === employee.ID) {
+                    if (action.payload.employee.id === employee.id) {
                         employee = action.payload.employee;
                     }
                     return employee;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_EMPLOYEE:
             return {
                 ...state,
-                employees: state.employees.filter(employee => employee.ID !== action.payload)
+                employees: state.employees.filter(employee => employee.id !== action.payload)
             };
 
         default:

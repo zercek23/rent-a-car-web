@@ -1,57 +1,56 @@
-import { GET_ITEM, GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from './types';
-import axios from 'axios';
+import { GET_FUELTYPE, GET_FUELTYPES, ADD_FUELTYPE, UPDATE_FUELTYPE, DELETE_FUELTYPE } from './types';
+import API from '../../service/api';
 
-export const getItems = () => dispatch => {
-    // dispatch(setProjectsLoading());
-    axios
-        .get('/api/projects')
+export const getFuelTypes = () => dispatch => {
+    API
+        .getData('/FuelType/getall')
         .then(res =>
             dispatch({
-                type: GET_PROJECTS,
-                payload: res.data
+                type: GET_FUELTYPES,
+                payload: res.data.data
             })
         )
 }
 
-export const getItem = (id) => dispatch => {
-    axios
-        .get(`/api/projects/${id}`)
+export const getFuelType = (id) => dispatch => {
+    API
+        .getData(`/FuelType/getbyid?id=${id}`)
         .then(res =>
             dispatch({
-                type: GET_PROJECT,
-                payload: res.data
+                type: GET_FUELTYPE,
+                payload: res.data.data
             })
         )
 }
 
-export const addItem = (project) => dispatch => {
-    axios
-        .post('/api/projects', project)
+export const addFuelType = (fuelType) => dispatch => {
+    API
+        .postData('/FuelType/add', fuelType)
         .then(res =>
             dispatch({
-                type: ADD_PROJECT,
-                payload: res.data
+                type: ADD_FUELTYPE,
+                payload: fuelType
             })
         )
 }
 
-export const updateItem = (id, project) => dispatch => {
-    axios
-        .put(`/api/projects/${id}`, project)
+export const updateFuelType = (fuelType) => dispatch => {
+    API
+        .putData(`/FuelType/update?id=${fuelType.id}`, fuelType)
         .then(res =>
             dispatch({
-                type: UPDATE_PROJECT,
-                payload: { id, project }
+                type: UPDATE_FUELTYPE,
+                payload: { fuelType }
             })
         )
 }
 
-export const deleteItem = (id) => dispatch => {
-    axios
-        .delete(`/api/projects/${id}`)
+export const deleteFuelType = (id) => dispatch => {
+    API
+        .deleteData(`/FuelType/delete?id=${id}`)
         .then(res =>
             dispatch({
-                type: DELETE_PROJECT,
+                type: DELETE_FUELTYPE,
                 payload: id
             })
         )

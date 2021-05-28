@@ -35,13 +35,22 @@ const Modals = React.lazy(() => import('./views/notifications/modals/Modals'));
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'));
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'));
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
+
 const Users = React.lazy(() => import('./views/users/Users'));
 const AddUser = React.lazy(() => import('./views/users/AddUser'));
 const EditUser = React.lazy(() => import('./views/users/EditUser'));
 const User = React.lazy(() => import('./views/users/User'));
 
+const FuelTypes = React.lazy(() => import('./views/fuelTypes/FuelTypes'));
+const AddFuelType = React.lazy(() => import('./views/fuelTypes/AddFuelType'));
+const EditFuelType = React.lazy(() => import('./views/fuelTypes/EditFuelType'));
+
+const GearTypes = React.lazy(() => import('./views/gearTypes/GearTypes'));
+const AddGearType = React.lazy(() => import('./views/gearTypes/AddGearType'));
+const EditGearType = React.lazy(() => import('./views/gearTypes/EditGearType'));
+
 const routes = [
-  { path: '/', exact: true, name: 'Home' },
+  { path: '/', exact: true, name: 'Ana Sayfa' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
@@ -79,10 +88,16 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', component: Modals },
   { path: '/notifications/toaster', name: 'Toaster', component: Toaster },
   { path: '/widgets', name: 'Widgets', component: Widgets },
-  { path: '/users', exact: true,  name: 'Users', component: Users },
-  { path: '/add-user', exact: true,  name: 'Add User', component: AddUser },
-  { path: '/edit-user/:id', exact: true,  name: 'Edit User', component: EditUser },
-  { path: '/users/:id', exact: true, name: 'User Details', component: User }
+  { path: '/users', exact: true, name: 'Kullanıcılar', component: Users },
+  { path: '/add-user', exact: true, name: 'Kullanıcı Ekle', component: AddUser },
+  { path: '/edit-user/:id', exact: true, name: 'Kullanıcı Düzenle', component: EditUser },
+  { path: '/users/:id', exact: true, name: 'User Details', component: User },
+  { path: '/fuelTypes', exact: true, name: 'Benzin Tipleri', component: FuelTypes },
+  { path: '/add-fuelType', exact: true, name: 'Benzin Tipi Ekle', component: AddFuelType },
+  { path: '/edit-fuelType/:id', exact: true, name: 'Benzin Tipi Düzenle', component: EditFuelType },
+  { path: '/gearTypes', exact: true, name: 'Vites Tipleri', component: GearTypes },
+  { path: '/add-gearType', exact: true, name: 'Vites Tipi Ekle', component: AddGearType },
+  { path: '/edit-gearType/:id', exact: true, name: 'Vites Tipi Düzenle', component: EditGearType },
 ];
 
 export default routes;

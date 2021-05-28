@@ -1,58 +1,58 @@
-import { GET_ITEM, GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from './types';
-import axios from 'axios';
+import { GET_GEARTYPE, GET_GEARTYPES, ADD_GEARTYPE, UPDATE_GEARTYPE, DELETE_GEARTYPE } from './types';
+import API from '../../service/api';
 
-export const getItems = () => dispatch => {
-    // dispatch(setProjectsLoading());
-    axios
-        .get('/api/projects')
+export const getGearTypes = () => dispatch => {
+    console.log('2');
+    API
+        .getData('/GearType/getall')
         .then(res =>
             dispatch({
-                type: GET_PROJECTS,
-                payload: res.data
+                type: GET_GEARTYPES,
+                payload: res.data.data
             })
         )
 }
 
-export const getItem = (id) => dispatch => {
-    axios
-        .get(`/api/projects/${id}`)
-        .then(res =>
+export const getGearType = (id) => dispatch => {
+    API
+        .getData(`/GearType/getbyid?id=${id}`)
+        .then(res => {
             dispatch({
-                type: GET_PROJECT,
-                payload: res.data
-            })
-        )
+                type: GET_GEARTYPE,
+                payload: res.data.data
+            });
+        })
 }
 
-export const addItem = (project) => dispatch => {
-    axios
-        .post('/api/projects', project)
-        .then(res =>
+export const addGearType = (gearType) => dispatch => {
+    API
+        .postData('/GearType/add', gearType)
+        .then(res => {
             dispatch({
-                type: ADD_PROJECT,
-                payload: res.data
+                type: ADD_GEARTYPE,
+                payload: res.data.data
             })
-        )
+        });
 }
 
-export const updateItem = (id, project) => dispatch => {
-    axios
-        .put(`/api/projects/${id}`, project)
+export const updateGearType = (gearType) => dispatch => {
+    API
+        .putData(`/GearType/update?id=${gearType.id}`, gearType)
         .then(res =>
             dispatch({
-                type: UPDATE_PROJECT,
-                payload: { id, project }
+                type: UPDATE_GEARTYPE,
+                payload: { gearType }
             })
-        )
+        );
 }
 
-export const deleteItem = (id) => dispatch => {
-    axios
-        .delete(`/api/projects/${id}`)
-        .then(res =>
+export const deleteGearType = (id) => dispatch => {
+    API
+        .deleteData(`/GearType/delete?id=${id}`)
+        .then(res => {
             dispatch({
-                type: DELETE_PROJECT,
+                type: DELETE_GEARTYPE,
                 payload: id
             })
-        )
+        });
 }

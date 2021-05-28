@@ -5,24 +5,24 @@ class Service {
         this.baseUrl = "https://localhost:44393/api";
     }
 
-    getData(path) {
+      async getData(path) {
         let url = `${this.baseUrl}${path}`;
-        return axios.get(`${url}`);
+        return await axios.get(`${url}`);
       }
     
-      putData(path, data) {
+      async putData(path, data) {
         let url = `${this.baseUrl}${path}`;
-        return axios.put(`${url}`, data);
+        return await axios.put(`${url}`, data);
       }
     
-      postData(path, data) {
+      async postData(path, data) {
         let url = `${this.baseUrl}${path}`;
-        return axios.post(`${url}`, data);
+        return await axios.post(`${url}`, data);
       }
     
-      deleteData(path) {
+      async deleteData(path) {
         let url = `${this.baseUrl}${path}`;
-        return axios.delete(`${url}`);
+        return await axios.delete(`${url}`);
       }
 }
 

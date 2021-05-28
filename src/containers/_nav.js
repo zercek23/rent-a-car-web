@@ -18,8 +18,20 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Users',
+    name: 'Kullanıcılar',
     to: '/users',
+    icon: 'cil-drop',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Vites Tipleri',
+    to: '/gearTypes',
+    icon: 'cil-drop',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Benzin Tipleri',
+    to: '/fuelTypes',
     icon: 'cil-drop',
   },
   {
