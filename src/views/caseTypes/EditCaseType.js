@@ -33,36 +33,36 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { connect } from 'react-redux';
-import { getFuelType, updateFuelType } from '../../store/actions/fuelTypeActions';
+import { getCaseType, updateCaseType } from '../../store/actions/caseTypeActions';
 
-const EditFuelType = (props) => {
+const EditCaseType = (props) => {
 
-    const [fuelType, setFuelType] = useState({});
+    const [caseType, setCaseType] = useState({});
     // const user2 = usersData.find( user => user.id.toString() === match.params.id)
-    const userDetails = fuelType ? Object.entries(fuelType) :
+    const userDetails = caseType ? Object.entries(caseType) :
         [['id', (<span><CIcon className="text-muted" name="cui-icon-ban" /> Not found</span>)]]
 
     useEffect(() => {
-        props.getFuelType(props.match.params.id);
+        props.getCaseType(props.match.params.id);
     }, [])
 
     useEffect(() => {
-        if (props.fuelType.fuelType) {
-            setFuelType(props.fuelType.fuelType);
+        if (props.caseType.caseType) {
+            setCaseType(props.caseType.caseType);
         }
-    }, [props.fuelType.fuelType])
+    }, [props.caseType.caseType])
 
     const onChange = (e) => {
-        setFuelType({...fuelType ,[e.target.name]: e.target.value});
+        setCaseType({...caseType ,[e.target.name]: e.target.value});
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        props.updateFuelType(fuelType.id, fuelType);
+        props.updateCaseType(caseType.id, caseType);
     }
 
     const resetForm = () => {
-        setFuelType({});
+        setCaseType({});
     }
 
     return (
@@ -71,14 +71,14 @@ const EditFuelType = (props) => {
                 <CCol xs="12" sm="12">
                     <CCard>
                         <CCardHeader>
-                        Benzin Tipi Düzenle
+                        Kasa Tipi Düzenle
                         </CCardHeader>
                         <CCardBody>
                             <CRow>
                                 <CCol xs="12">
                                     <CFormGroup>
                                         <CLabel htmlFor="name">Tip</CLabel>
-                                        <CInput type="text" name="name" placeholder="Tip" required value={fuelType.name} onChange={onChange} />
+                                        <CInput type="text" name="name" placeholder="Tip" required value={caseType.name} onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
@@ -94,7 +94,7 @@ const EditFuelType = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    fuelType: state.fuelType
+    caseType: state.caseType
 });
 
-export default connect(mapStateToProps, { getFuelType, updateFuelType })(EditFuelType);
+export default connect(mapStateToProps, { getCaseType, updateCaseType })(EditCaseType);

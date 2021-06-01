@@ -30,7 +30,7 @@ export const addEmployee = (employee) => dispatch => {
         .then(res =>
             dispatch({
                 type: ADD_EMPLOYEE,
-                payload: res.data
+                payload: res.data.data
             })
         )
 }

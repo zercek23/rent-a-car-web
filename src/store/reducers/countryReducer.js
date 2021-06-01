@@ -1,7 +1,8 @@
 import { GET_COUNTRY, GET_COUNTRIES, ADD_COUNTRY, UPDATE_COUNTRY, DELETE_COUNTRY } from '../actions/types';
 
 const initialState = {
-    countries: []
+    countries: [],
+    country: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_COUNTRY:
             return {
+                ...state,
                 country: action.payload
             };
         case ADD_COUNTRY:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 countries: state.countries.map((country) => {
-                    if (action.payload.id === country.ID) {
+                    if (action.payload.country.id === country.id) {
                         country = action.payload.country;
                     }
                     return country;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_COUNTRY:
             return {
                 ...state,
-                countries: state.countries.filter(country => country.ID !== action.payload)
+                countries: state.countries.filter(country => country.id !== action.payload)
             };
 
         default:

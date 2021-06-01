@@ -19,7 +19,7 @@ import {
 } from '@coreui/react'
 
 import { connect } from 'react-redux';
-import { getFuelTypes, deleteFuelType } from '../../store/actions/fuelTypeActions';
+import { getCaseTypes, deleteCaseType } from '../../store/actions/caseTypeActions';
 
 const getBadge = status => {
   switch (status) {
@@ -42,54 +42,54 @@ const fields = [
   },
 ]
 
-const FuelTypes = (props) => {
+const CaseTypes = (props) => {
   const history = useHistory()
   const queryPage = useLocation().search.match(/page=([0-9]+)/, '')
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1)
   const [page, setPage] = useState(currentPage)
 
   const pageChange = newPage => {
-    currentPage !== newPage && history.push(`/fuelTypes?page=${newPage}`)
+    currentPage !== newPage && history.push(`/caseTypes?page=${newPage}`)
   }
 
   useEffect(() => {
-    props.getFuelTypes();
+    props.getCaseTypes();
 
     currentPage !== page && setPage(currentPage)
   }, [currentPage, page])
 
   useEffect(() => {
-    if (props.fuelType.fuelTypes) {
+    if (props.caseType.caseTypes) {
     }
 
-  }, [props.fuelType.fuelTypes])
+  }, [props.caseType.caseTypes])
 
   const deleteById = (id) => {
-    props.deleteFuelType(id);
+    props.deleteCaseType(id);
   }
 
   return (
     <div>
       <CRow>
         <CCol col="3" sm="3" md="3" xl="3" className="mb-3 mb-xl-0">
-          <CButton block color="primary" to="add-fuelType">Benzin Tipi Ekle</CButton>
+          <CButton block color="primary" to="add-caseType">Kasa Tipi Ekle</CButton>
         </CCol>
       </CRow>
       <CRow>
         <CCol>
           <CCard>
             <CCardHeader>
-              Benzin Tipleri
+              Kasa Tipleri
         </CCardHeader>
             <CCardBody>
               <CDataTable
-                items={props.fuelType.fuelTypes}
+                items={props.caseType.caseTypes}
                 fields={fields}
                 hover
                 striped
                 bordered
                 size="sm"
-                // onRowClick={(item) => history.push(`/edit-fuelType/${item.id}`)}
+                // onRowClick={(item) => history.push(`/edit-caseType/${item.id}`)}
                 itemsPerPage={10}
                 pagination
                 scopedSlots={{
@@ -101,7 +101,7 @@ const FuelTypes = (props) => {
                             Seçenekler
                           </CDropdownToggle>
                           <CDropdownMenu>
-                            <CButton block color="warning" to={`/edit-fuelType/${item.id}`}>Düzenle</CButton>
+                            <CButton block color="warning" to={`/edit-caseType/${item.id}`}>Düzenle</CButton>
                             <CButton block color="danger" onClick={() => deleteById(item.id)}>Sil</CButton>
                           </CDropdownMenu>
                         </CDropdown>
@@ -119,7 +119,7 @@ const FuelTypes = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  fuelType: state.fuelType
+  caseType: state.caseType
 });
 
-export default connect(mapStateToProps, { getFuelTypes, deleteFuelType })(FuelTypes);
+export default connect(mapStateToProps, { getCaseTypes, deleteCaseType })(CaseTypes);

@@ -29,7 +29,7 @@ export const addFuelType = (fuelType) => dispatch => {
         .then(res =>
             dispatch({
                 type: ADD_FUELTYPE,
-                payload: fuelType
+                payload: res.data.data
             })
         )
 }

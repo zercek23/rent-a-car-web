@@ -1,7 +1,8 @@
 import { GET_COLOR, GET_COLORS, ADD_COLOR, UPDATE_COLOR, DELETE_COLOR } from '../actions/types';
 
 const initialState = {
-    colors: []
+    colors: [],
+    color: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_COLOR:
             return {
+                ...state,
                 color: action.payload
             };
         case ADD_COLOR:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 colors: state.colors.map((color) => {
-                    if (action.payload.id === color.ID) {
+                    if (action.payload.color.id === color.id) {
                         color = action.payload.color;
                     }
                     return color;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_COLOR:
             return {
                 ...state,
-                colors: state.colors.filter(color => color.ID !== action.payload)
+                colors: state.colors.filter(color => color.id !== action.payload)
             };
 
         default:

@@ -1,57 +1,57 @@
-import { GET_ITEM, GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from './types';
-import axios from 'axios';
+import { GET_COUNTRY, GET_COUNTRIES, ADD_COUNTRY, UPDATE_COUNTRY, DELETE_COUNTRY } from './types';
+import API from '../../service/api'
 
-export const getItems = () => dispatch => {
+export const getCountries = () => dispatch => {
     // dispatch(setProjectsLoading());
-    axios
-        .get('/api/projects')
+    API
+        .getData('/Country/getall')
         .then(res =>
             dispatch({
-                type: GET_PROJECTS,
-                payload: res.data
+                type: GET_COUNTRIES,
+                payload: res.data.data
             })
         )
 }
 
-export const getItem = (id) => dispatch => {
-    axios
-        .get(`/api/projects/${id}`)
+export const getCountry = (id) => dispatch => {
+    API
+        .getData(`/Country/getbyid?id=${id}`)
         .then(res =>
             dispatch({
-                type: GET_PROJECT,
-                payload: res.data
+                type: GET_COUNTRY,
+                payload: res.data.data
             })
         )
 }
 
-export const addItem = (project) => dispatch => {
-    axios
-        .post('/api/projects', project)
+export const addCountry = (caseType) => dispatch => {
+    API
+        .postData('/Country/add', caseType)
         .then(res =>
             dispatch({
-                type: ADD_PROJECT,
-                payload: res.data
+                type: ADD_COUNTRY,
+                payload: res.data.data
             })
         )
 }
 
-export const updateItem = (id, project) => dispatch => {
-    axios
-        .put(`/api/projects/${id}`, project)
+export const updateCountry = (caseType) => dispatch => {
+    API
+        .putData(`/Country/update`, caseType)
         .then(res =>
             dispatch({
-                type: UPDATE_PROJECT,
-                payload: { id, project }
+                type: UPDATE_COUNTRY,
+                payload: { caseType }
             })
         )
 }
 
-export const deleteItem = (id) => dispatch => {
-    axios
-        .delete(`/api/projects/${id}`)
+export const deleteCountry = (id) => dispatch => {
+    API
+        .deleteData(`/Country/delete?id=${id}`)
         .then(res =>
             dispatch({
-                type: DELETE_PROJECT,
+                type: DELETE_COUNTRY,
                 payload: id
             })
         )

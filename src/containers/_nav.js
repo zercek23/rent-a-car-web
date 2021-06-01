@@ -36,6 +36,12 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
+    name: 'Kasa Tipleri',
+    to: '/caseTypes',
+    icon: 'cil-drop',
+  },
+  {
+    _tag: 'CSidebarNavItem',
     name: 'Typography',
     to: '/theme/typography',
     icon: 'cil-pencil',

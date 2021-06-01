@@ -1,7 +1,8 @@
 import { GET_CASETYPE, GET_CASETYPES, ADD_CASETYPE, UPDATE_CASETYPE, DELETE_CASETYPE } from '../actions/types';
 
 const initialState = {
-    caseTypes: []
+    caseTypes: [],
+    caseType: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_CASETYPE:
             return {
+                ...state,
                 caseType: action.payload
             };
         case ADD_CASETYPE:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 caseTypes: state.caseTypes.map((caseType) => {
-                    if (action.payload.id === caseType.ID) {
+                    if (action.payload.caseType.id === caseType.id) {
                         caseType = action.payload.caseType;
                     }
                     return caseType;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_CASETYPE:
             return {
                 ...state,
-                caseTypes: state.caseTypes.filter(caseType => caseType.ID !== action.payload)
+                caseTypes: state.caseTypes.filter(caseType => caseType.id !== action.payload)
             };
 
         default:

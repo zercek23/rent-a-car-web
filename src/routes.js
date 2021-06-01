@@ -49,6 +49,10 @@ const GearTypes = React.lazy(() => import('./views/gearTypes/GearTypes'));
 const AddGearType = React.lazy(() => import('./views/gearTypes/AddGearType'));
 const EditGearType = React.lazy(() => import('./views/gearTypes/EditGearType'));
 
+const CaseTypes = React.lazy(() => import('./views/caseTypes/CaseTypes'));
+const AddCaseType = React.lazy(() => import('./views/caseTypes/AddCaseType'));
+const EditCaseType = React.lazy(() => import('./views/caseTypes/EditCaseType'));
+
 const routes = [
   { path: '/', exact: true, name: 'Ana Sayfa' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
@@ -98,6 +102,9 @@ const routes = [
   { path: '/gearTypes', exact: true, name: 'Vites Tipleri', component: GearTypes },
   { path: '/add-gearType', exact: true, name: 'Vites Tipi Ekle', component: AddGearType },
   { path: '/edit-gearType/:id', exact: true, name: 'Vites Tipi Düzenle', component: EditGearType },
+  { path: '/caseTypes', exact: true, name: 'Vites Tipleri', component: CaseTypes },
+  { path: '/add-caseType', exact: true, name: 'Vites Tipi Ekle', component: AddCaseType },
+  { path: '/edit-caseType/:id', exact: true, name: 'Vites Tipi Düzenle', component: EditCaseType },
 ];
 
 export default routes;
