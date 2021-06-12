@@ -1,57 +1,56 @@
-import { GET_ITEM, GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from './types';
-import axios from 'axios';
+import { GET_PAYMENT, GET_PAYMENTS, ADD_PAYMENT, UPDATE_PAYMENT, DELETE_PAYMENT } from './types';
+import API from '../../service/api'
 
-export const getItems = () => dispatch => {
-    // dispatch(setProjectsLoading());
-    axios
-        .get('/api/projects')
+export const getPayments = () => dispatch => {
+    API
+        .getData('/Payment/getall')
         .then(res =>
             dispatch({
-                type: GET_PROJECTS,
-                payload: res.data
+                type: GET_PAYMENTS,
+                payload: res.data.data
             })
         )
 }
 
-export const getItem = (id) => dispatch => {
-    axios
-        .get(`/api/projects/${id}`)
+export const getPayment = (id) => dispatch => {
+    API
+        .getData(`/Payment/getbyid?id=${id}`)
         .then(res =>
             dispatch({
-                type: GET_PROJECT,
-                payload: res.data
+                type: GET_PAYMENT,
+                payload: res.data.data
             })
         )
 }
 
-export const addItem = (project) => dispatch => {
-    axios
-        .post('/api/projects', project)
+export const addPayment = (payment) => dispatch => {
+    API
+        .postData('/Payment/add', payment)
         .then(res =>
             dispatch({
-                type: ADD_PROJECT,
-                payload: res.data
+                type: ADD_PAYMENT,
+                payload: res.data.data
             })
         )
 }
 
-export const updateItem = (id, project) => dispatch => {
-    axios
-        .put(`/api/projects/${id}`, project)
+export const updatePayment = (payment) => dispatch => {
+    API
+        .putData(`/Payment/update`, payment)
         .then(res =>
             dispatch({
-                type: UPDATE_PROJECT,
-                payload: { id, project }
+                type: UPDATE_PAYMENT,
+                payload: { payment }
             })
         )
 }
 
-export const deleteItem = (id) => dispatch => {
-    axios
-        .delete(`/api/projects/${id}`)
+export const deletePayment = (id) => dispatch => {
+    API
+        .deleteData(`/Payment/delete?id=${id}`)
         .then(res =>
             dispatch({
-                type: DELETE_PROJECT,
+                type: DELETE_PAYMENT,
                 payload: id
             })
         )

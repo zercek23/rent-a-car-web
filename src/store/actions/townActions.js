@@ -1,57 +1,56 @@
-import { GET_ITEM, GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from './types';
-import axios from 'axios';
+import { GET_TOWN, GET_TOWNS, ADD_TOWN, UPDATE_TOWN, DELETE_TOWN } from './types';
+import API from '../../service/api'
 
-export const getItems = () => dispatch => {
-    // dispatch(setProjectsLoading());
-    axios
-        .get('/api/projects')
+export const getTowns = () => dispatch => {
+    API
+        .getData('/Town/getall')
         .then(res =>
             dispatch({
-                type: GET_PROJECTS,
-                payload: res.data
+                type: GET_TOWNS,
+                payload: res.data.data
             })
         )
 }
 
-export const getItem = (id) => dispatch => {
-    axios
-        .get(`/api/projects/${id}`)
+export const getTown = (id) => dispatch => {
+    API
+        .getData(`/Town/getbyid?id=${id}`)
         .then(res =>
             dispatch({
-                type: GET_PROJECT,
-                payload: res.data
+                type: GET_TOWN,
+                payload: res.data.data
             })
         )
 }
 
-export const addItem = (project) => dispatch => {
-    axios
-        .post('/api/projects', project)
+export const addTown = (town) => dispatch => {
+    API
+        .postData('/Town/add', town)
         .then(res =>
             dispatch({
-                type: ADD_PROJECT,
-                payload: res.data
+                type: ADD_TOWN,
+                payload: res.data.data
             })
         )
 }
 
-export const updateItem = (id, project) => dispatch => {
-    axios
-        .put(`/api/projects/${id}`, project)
+export const updateTown = (town) => dispatch => {
+    API
+        .putData(`/Town/update`, town)
         .then(res =>
             dispatch({
-                type: UPDATE_PROJECT,
-                payload: { id, project }
+                type: UPDATE_TOWN,
+                payload: { town }
             })
         )
 }
 
-export const deleteItem = (id) => dispatch => {
-    axios
-        .delete(`/api/projects/${id}`)
+export const deleteTown = (id) => dispatch => {
+    API
+        .deleteData(`/Town/delete?id=${id}`)
         .then(res =>
             dispatch({
-                type: DELETE_PROJECT,
+                type: DELETE_TOWN,
                 payload: id
             })
         )

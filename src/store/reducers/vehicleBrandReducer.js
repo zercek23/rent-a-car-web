@@ -1,7 +1,8 @@
 import { GET_VEHICLEBRAND, GET_VEHICLEBRANDS, ADD_VEHICLEBRAND, UPDATE_VEHICLEBRAND, DELETE_VEHICLEBRAND } from '../actions/types';
 
 const initialState = {
-    vehicleBrands: []
+    vehicleBrands: [],
+    vehicleBrand: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_VEHICLEBRAND:
             return {
+                ...state,
                 vehicleBrand: action.payload
             };
         case ADD_VEHICLEBRAND:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 vehicleBrands: state.vehicleBrands.map((vehicleBrand) => {
-                    if (action.payload.id === vehicleBrand.ID) {
+                    if (action.payload.vehicleBrand.id === vehicleBrand.id) {
                         vehicleBrand = action.payload.vehicleBrand;
                     }
                     return vehicleBrand;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_VEHICLEBRAND:
             return {
                 ...state,
-                vehicleBrands: state.vehicleBrands.filter(vehicleBrand => vehicleBrand.ID !== action.payload)
+                vehicleBrands: state.vehicleBrands.filter(vehicleBrand => vehicleBrand.id !== action.payload)
             };
 
         default:

@@ -1,7 +1,8 @@
 import { GET_PAYMENTTYPE, GET_PAYMENTTYPES, ADD_PAYMENTTYPE, UPDATE_PAYMENTTYPE, DELETE_PAYMENTTYPE } from '../actions/types';
 
 const initialState = {
-    paymentTypes: []
+    paymentTypes: [],
+    paymentType: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_PAYMENTTYPE:
             return {
+                ...state,
                 paymentType: action.payload
             };
         case ADD_PAYMENTTYPE:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 paymentTypes: state.paymentTypes.map((paymentType) => {
-                    if (action.payload.id === paymentType.ID) {
+                    if (action.payload.paymentType.id === paymentType.id) {
                         paymentType = action.payload.paymentType;
                     }
                     return paymentType;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_PAYMENTTYPE:
             return {
                 ...state,
-                paymentTypes: state.paymentTypes.filter(paymentType => paymentType.ID !== action.payload)
+                paymentTypes: state.paymentTypes.filter(paymentType => paymentType.id !== action.payload)
             };
 
         default:

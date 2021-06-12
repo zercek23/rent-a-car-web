@@ -1,7 +1,8 @@
 import { GET_VEHICLECATEGORY, GET_VEHICLECATEGORIES, ADD_VEHICLECATEGORY, UPDATE_VEHICLECATEGORY, DELETE_VEHICLECATEGORY } from '../actions/types';
 
 const initialState = {
-    vehicleCategorys: []
+    vehicleCategories: [],
+    vehicleCategory: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_VEHICLECATEGORY:
             return {
+                ...state,
                 vehicleCategory: action.payload
             };
         case ADD_VEHICLECATEGORY:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 vehicleCategories: state.vehicleCategories.map((vehicleCategory) => {
-                    if (action.payload.id === vehicleCategory.ID) {
+                    if (action.payload.vehicleCategory.id === vehicleCategory.id) {
                         vehicleCategory = action.payload.vehicleCategory;
                     }
                     return vehicleCategory;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_VEHICLECATEGORY:
             return {
                 ...state,
-                vehicleCategorys: state.vehicleCategorys.filter(vehicleCategory => vehicleCategory.ID !== action.payload)
+                vehicleCategories: state.vehicleCategories.filter(vehicleCategory => vehicleCategory.id !== action.payload)
             };
 
         default:

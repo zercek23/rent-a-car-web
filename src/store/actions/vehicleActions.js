@@ -1,57 +1,56 @@
-import { GET_ITEM, GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from './types';
-import axios from 'axios';
+import { GET_VEHICLE, GET_VEHICLES, ADD_VEHICLE, UPDATE_VEHICLE, DELETE_VEHICLE } from './types';
+import API from '../../service/api'
 
-export const getItems = () => dispatch => {
-    // dispatch(setProjectsLoading());
-    axios
-        .get('/api/projects')
+export const getVehicles = () => dispatch => {
+    API
+        .getData('/Vehicle/getall')
         .then(res =>
             dispatch({
-                type: GET_PROJECTS,
-                payload: res.data
+                type: GET_VEHICLES,
+                payload: res.data.data
             })
         )
 }
 
-export const getItem = (id) => dispatch => {
-    axios
-        .get(`/api/projects/${id}`)
+export const getVehicle = (id) => dispatch => {
+    API
+        .getData(`/Vehicle/getbyid?id=${id}`)
         .then(res =>
             dispatch({
-                type: GET_PROJECT,
-                payload: res.data
+                type: GET_VEHICLE,
+                payload: res.data.data
             })
         )
 }
 
-export const addItem = (project) => dispatch => {
-    axios
-        .post('/api/projects', project)
+export const addVehicle = (vehicle) => dispatch => {
+    API
+        .postData('/Vehicle/add', vehicle)
         .then(res =>
             dispatch({
-                type: ADD_PROJECT,
-                payload: res.data
+                type: ADD_VEHICLE,
+                payload: res.data.data
             })
         )
 }
 
-export const updateItem = (id, project) => dispatch => {
-    axios
-        .put(`/api/projects/${id}`, project)
+export const updateVehicle = (vehicle) => dispatch => {
+    API
+        .putData(`/Vehicle/update`, vehicle)
         .then(res =>
             dispatch({
-                type: UPDATE_PROJECT,
-                payload: { id, project }
+                type: UPDATE_VEHICLE,
+                payload: { vehicle }
             })
         )
 }
 
-export const deleteItem = (id) => dispatch => {
-    axios
-        .delete(`/api/projects/${id}`)
+export const deleteVehicle = (id) => dispatch => {
+    API
+        .deleteData(`/Vehicle/delete?id=${id}`)
         .then(res =>
             dispatch({
-                type: DELETE_PROJECT,
+                type: DELETE_VEHICLE,
                 payload: id
             })
         )

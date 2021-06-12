@@ -1,7 +1,8 @@
 import { GET_ORDER, GET_ORDERS, ADD_ORDER, UPDATE_ORDER, DELETE_ORDER } from '../actions/types';
 
 const initialState = {
-    orders: []
+    orders: [],
+    order: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_ORDER:
             return {
+                ...state,
                 order: action.payload
             };
         case ADD_ORDER:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 orders: state.orders.map((order) => {
-                    if (action.payload.id === order.ID) {
+                    if (action.payload.order.id === order.id) {
                         order = action.payload.order;
                     }
                     return order;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_ORDER:
             return {
                 ...state,
-                orders: state.orders.filter(order => order.ID !== action.payload)
+                orders: state.orders.filter(order => order.id !== action.payload)
             };
 
         default:

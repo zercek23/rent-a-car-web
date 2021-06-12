@@ -2,7 +2,6 @@ import { GET_EMPLOYEE, GET_EMPLOYEES, ADD_EMPLOYEE, UPDATE_EMPLOYEE, DELETE_EMPL
 import API from '../../service/api'
 
 export const getEmployees = () => dispatch => {
-    // dispatch(setProjectsLoading());
     API
         .getData('/Employee/getall')
         .then(res =>

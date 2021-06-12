@@ -1,7 +1,8 @@
 import { GET_COMPANY, GET_COMPANIES, ADD_COMPANY, UPDATE_COMPANY, DELETE_COMPANY } from '../actions/types';
 
 const initialState = {
-    companies: []
+    companies: [],
+    company: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_COMPANY:
             return {
+                ...state,
                 company: action.payload
             };
         case ADD_COMPANY:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 companies: state.companies.map((company) => {
-                    if (action.payload.id === company.ID) {
+                    if (action.payload.company.id === company.id) {
                         company = action.payload.company;
                     }
                     return company;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_COMPANY:
             return {
                 ...state,
-                companies: state.companies.filter(company => company.ID !== action.payload)
+                companies: state.companies.filter(company => company.id !== action.payload)
             };
 
         default:

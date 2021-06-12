@@ -2,7 +2,6 @@ import { GET_CASETYPE, GET_CASETYPES, ADD_CASETYPE, UPDATE_CASETYPE, DELETE_CASE
 import API from '../../service/api'
 
 export const getCaseTypes = () => dispatch => {
-    // dispatch(setProjectsLoading());
     API
         .getData('/CaseType/getall')
         .then(res =>

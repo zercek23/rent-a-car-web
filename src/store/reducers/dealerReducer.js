@@ -1,7 +1,8 @@
 import { GET_DEALER, GET_DEALERS, ADD_DEALER, UPDATE_DEALER, DELETE_DEALER } from '../actions/types';
 
 const initialState = {
-    dealers: []
+    dealers: [],
+    dealer: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_DEALER:
             return {
+                ...state,
                 dealer: action.payload
             };
         case ADD_DEALER:
@@ -24,8 +26,8 @@ export default function (state = initialState, action) {
         case UPDATE_DEALER:
             return {
                 ...state,
-                dealers: state.projects.map((dealer) => {
-                    if (action.payload.id === dealer.ID) {
+                dealers: state.dealers.map((dealer) => {
+                    if (action.payload.dealer.id === dealer.id) {
                         dealer = action.payload.dealer;
                     }
                     return dealer;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_DEALER:
             return {
                 ...state,
-                dealers: state.dealers.filter(dealer => dealer.ID !== action.payload)
+                dealers: state.dealers.filter(dealer => dealer.id !== action.payload)
             };
 
         default:

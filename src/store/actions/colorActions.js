@@ -2,7 +2,6 @@ import { GET_COLOR, GET_COLORS, ADD_COLOR, UPDATE_COLOR, DELETE_COLOR } from './
 import API from '../../service/api'
 
 export const getColors = () => dispatch => {
-    // dispatch(setProjectsLoading());
     API
         .getData('/Color/getall')
         .then(res =>
@@ -24,9 +23,9 @@ export const getColor = (id) => dispatch => {
         )
 }
 
-export const addColor = (caseType) => dispatch => {
+export const addColor = (color) => dispatch => {
     API
-        .postData('/Color/add', caseType)
+        .postData('/Color/add', color)
         .then(res =>
             dispatch({
                 type: ADD_COLOR,
@@ -35,13 +34,13 @@ export const addColor = (caseType) => dispatch => {
         )
 }
 
-export const updateColor = (caseType) => dispatch => {
+export const updateColor = (color) => dispatch => {
     API
-        .putData(`/Color/update`, caseType)
+        .putData(`/Color/update`, color)
         .then(res =>
             dispatch({
                 type: UPDATE_COLOR,
-                payload: { caseType }
+                payload: { color }
             })
         )
 }

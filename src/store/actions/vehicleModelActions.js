@@ -1,57 +1,56 @@
-import { GET_ITEM, GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from './types';
-import axios from 'axios';
+import { GET_VEHICLEMODEL, GET_VEHICLEMODELS, ADD_VEHICLEMODEL, UPDATE_VEHICLEMODEL, DELETE_VEHICLEMODEL } from './types';
+import API from '../../service/api'
 
-export const getItems = () => dispatch => {
-    // dispatch(setProjectsLoading());
-    axios
-        .get('/api/projects')
+export const getVehicleModels = () => dispatch => {
+    API
+        .getData('/VehicleModel/getall')
         .then(res =>
             dispatch({
-                type: GET_PROJECTS,
-                payload: res.data
+                type: GET_VEHICLEMODELS,
+                payload: res.data.data
             })
         )
 }
 
-export const getItem = (id) => dispatch => {
-    axios
-        .get(`/api/projects/${id}`)
+export const getVehicleModel = (id) => dispatch => {
+    API
+        .getData(`/VehicleModel/getbyid?id=${id}`)
         .then(res =>
             dispatch({
-                type: GET_PROJECT,
-                payload: res.data
+                type: GET_VEHICLEMODEL,
+                payload: res.data.data
             })
         )
 }
 
-export const addItem = (project) => dispatch => {
-    axios
-        .post('/api/projects', project)
+export const addVehicleModel = (vehicleModel) => dispatch => {
+    API
+        .postData('/VehicleModel/add', vehicleModel)
         .then(res =>
             dispatch({
-                type: ADD_PROJECT,
-                payload: res.data
+                type: ADD_VEHICLEMODEL,
+                payload: res.data.data
             })
         )
 }
 
-export const updateItem = (id, project) => dispatch => {
-    axios
-        .put(`/api/projects/${id}`, project)
+export const updateVehicleModel = (vehicleModel) => dispatch => {
+    API
+        .putData(`/VehicleModel/update`, vehicleModel)
         .then(res =>
             dispatch({
-                type: UPDATE_PROJECT,
-                payload: { id, project }
+                type: UPDATE_VEHICLEMODEL,
+                payload: { vehicleModel }
             })
         )
 }
 
-export const deleteItem = (id) => dispatch => {
-    axios
-        .delete(`/api/projects/${id}`)
+export const deleteVehicleModel = (id) => dispatch => {
+    API
+        .deleteData(`/VehicleModel/delete?id=${id}`)
         .then(res =>
             dispatch({
-                type: DELETE_PROJECT,
+                type: DELETE_VEHICLEMODEL,
                 payload: id
             })
         )

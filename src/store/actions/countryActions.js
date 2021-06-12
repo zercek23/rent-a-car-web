@@ -2,7 +2,6 @@ import { GET_COUNTRY, GET_COUNTRIES, ADD_COUNTRY, UPDATE_COUNTRY, DELETE_COUNTRY
 import API from '../../service/api'
 
 export const getCountries = () => dispatch => {
-    // dispatch(setProjectsLoading());
     API
         .getData('/Country/getall')
         .then(res =>
@@ -24,9 +23,9 @@ export const getCountry = (id) => dispatch => {
         )
 }
 
-export const addCountry = (caseType) => dispatch => {
+export const addCountry = (country) => dispatch => {
     API
-        .postData('/Country/add', caseType)
+        .postData('/Country/add', country)
         .then(res =>
             dispatch({
                 type: ADD_COUNTRY,
@@ -35,13 +34,13 @@ export const addCountry = (caseType) => dispatch => {
         )
 }
 
-export const updateCountry = (caseType) => dispatch => {
+export const updateCountry = (country) => dispatch => {
     API
-        .putData(`/Country/update`, caseType)
+        .putData(`/Country/update`, country)
         .then(res =>
             dispatch({
                 type: UPDATE_COUNTRY,
-                payload: { caseType }
+                payload: { country }
             })
         )
 }

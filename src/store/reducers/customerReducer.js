@@ -1,7 +1,8 @@
 import { GET_CUSTOMER, GET_CUSTOMERS, ADD_CUSTOMER, UPDATE_CUSTOMER, DELETE_CUSTOMER } from '../actions/types';
 
 const initialState = {
-    customers: []
+    customers: [],
+    customer: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_CUSTOMER:
             return {
+                ...state,
                 customer: action.payload
             };
         case ADD_CUSTOMER:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 customers: state.customers.map((customer) => {
-                    if (action.payload.id === customer.ID) {
+                    if (action.payload.customer.id === customer.id) {
                         customer = action.payload.customer;
                     }
                     return customer;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_CUSTOMER:
             return {
                 ...state,
-                customers: state.customers.filter(customer => customer.ID !== action.payload)
+                customers: state.customers.filter(customer => customer.id !== action.payload)
             };
 
         default:

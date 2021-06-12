@@ -2,7 +2,6 @@ import { GET_CITY, GET_CITIES, ADD_CITY, UPDATE_CITY, DELETE_CITY } from './type
 import API from '../../service/api'
 
 export const getCities = () => dispatch => {
-    // dispatch(setProjectsLoading());
     API
         .getData('/City/getall')
         .then(res =>
@@ -24,9 +23,9 @@ export const getCity = (id) => dispatch => {
         )
 }
 
-export const addCity = (caseType) => dispatch => {
+export const addCity = (city) => dispatch => {
     API
-        .postData('/City/add', caseType)
+        .postData('/City/add', city)
         .then(res =>
             dispatch({
                 type: ADD_CITY,
@@ -35,13 +34,13 @@ export const addCity = (caseType) => dispatch => {
         )
 }
 
-export const updateCity = (caseType) => dispatch => {
+export const updateCity = (city) => dispatch => {
     API
-        .putData(`/City/update`, caseType)
+        .putData(`/City/update`, city)
         .then(res =>
             dispatch({
                 type: UPDATE_CITY,
-                payload: { caseType }
+                payload: { city }
             })
         )
 }

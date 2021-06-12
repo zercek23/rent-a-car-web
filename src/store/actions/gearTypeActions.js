@@ -2,7 +2,6 @@ import { GET_GEARTYPE, GET_GEARTYPES, ADD_GEARTYPE, UPDATE_GEARTYPE, DELETE_GEAR
 import API from '../../service/api';
 
 export const getGearTypes = () => dispatch => {
-    console.log('2');
     API
         .getData('/GearType/getall')
         .then(res =>

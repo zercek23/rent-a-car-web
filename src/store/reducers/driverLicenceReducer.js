@@ -1,7 +1,8 @@
 import { GET_DRIVERLICENCE, GET_DRIVERLICENCES, ADD_DRIVERLICENCE, UPDATE_DRIVERLICENCE, DELETE_DRIVERLICENCE } from '../actions/types';
 
 const initialState = {
-    driverLicences: []
+    driverLicences: [],
+    driverLicence: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_DRIVERLICENCE:
             return {
+                ...state,
                 driverLicence: action.payload
             };
         case ADD_DRIVERLICENCE:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 driverLicences: state.driverLicences.map((driverLicence) => {
-                    if (action.payload.id === driverLicence.ID) {
+                    if (action.payload.driverLicence.id === driverLicence.id) {
                         driverLicence = action.payload.driverLicence;
                     }
                     return driverLicence;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_DRIVERLICENCE:
             return {
                 ...state,
-                driverLicences: state.driverLicences.filter(driverLicence => driverLicence.ID !== action.payload)
+                driverLicences: state.driverLicences.filter(driverLicence => driverLicence.id !== action.payload)
             };
 
         default:

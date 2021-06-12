@@ -1,7 +1,8 @@
 import { GET_ORDERITEM, GET_ORDERITEMS, ADD_ORDERITEM, UPDATE_ORDERITEM, DELETE_ORDERITEM } from '../actions/types';
 
 const initialState = {
-    orderItems: []
+    orderItems: [],
+    orderItem: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_ORDERITEM:
             return {
+                ...state,
                 orderItem: action.payload
             };
         case ADD_ORDERITEM:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 orderItems: state.orderItems.map((orderItem) => {
-                    if (action.payload.id === orderItem.ID) {
+                    if (action.payload.orderItem.id === orderItem.id) {
                         orderItem = action.payload.orderItem;
                     }
                     return orderItem;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_ORDERITEM:
             return {
                 ...state,
-                orderItems: state.orderItems.filter(orderItem => orderItem.ID !== action.payload)
+                orderItems: state.orderItems.filter(orderItem => orderItem.id !== action.payload)
             };
 
         default:

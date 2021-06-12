@@ -1,7 +1,8 @@
 import { GET_VEHICLE, GET_VEHICLES, ADD_VEHICLE, UPDATE_VEHICLE, DELETE_VEHICLE } from '../actions/types';
 
 const initialState = {
-    vehicles: []
+    vehicles: [],
+    vehicle: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_VEHICLE:
             return {
+                ...state,
                 vehicle: action.payload
             };
         case ADD_VEHICLE:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 vehicles: state.vehicles.map((vehicle) => {
-                    if (action.payload.id === vehicle.ID) {
+                    if (action.payload.vehicle.id === vehicle.id) {
                         vehicle = action.payload.vehicle;
                     }
                     return vehicle;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_VEHICLE:
             return {
                 ...state,
-                vehicles: state.vehicles.filter(vehicle => vehicle.ID !== action.payload)
+                vehicles: state.vehicles.filter(vehicle => vehicle.id !== action.payload)
             };
 
         default:

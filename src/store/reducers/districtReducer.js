@@ -1,7 +1,8 @@
 import { GET_DISTRICT, GET_DISTRICTS, ADD_DISTRICT, UPDATE_DISTRICT, DELETE_DISTRICT } from '../actions/types';
 
 const initialState = {
-    districts: []
+    districts: [],
+    district: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_DISTRICT:
             return {
+                ...state,
                 district: action.payload
             };
         case ADD_DISTRICT:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 districts: state.districts.map((district) => {
-                    if (action.payload.id === district.ID) {
+                    if (action.payload.district.id === district.id) {
                         district = action.payload.district;
                     }
                     return district;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_DISTRICT:
             return {
                 ...state,
-                districts: state.districts.filter(district => district.ID !== action.payload)
+                districts: state.districts.filter(district => district.id !== action.payload)
             };
 
         default:

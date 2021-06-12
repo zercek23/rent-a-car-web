@@ -1,7 +1,8 @@
 import { GET_ADDRESS, GET_ADDRESSES, ADD_ADDRESS, UPDATE_ADDRESS, DELETE_ADDRESS } from '../actions/types';
 
 const initialState = {
-    addresses: []
+    addresses: [],
+    address: {}
 }
 
 export default function (state = initialState, action) {
@@ -10,9 +11,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 addresses: action.payload,
+                loading: false
             };
         case GET_ADDRESS:
             return {
+                ...state,
                 address: action.payload
             };
         case ADD_ADDRESS:
@@ -24,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 addresses: state.addresses.map((address) => {
-                    if (action.payload.id === address.ID) {
+                    if (action.payload.address.id === address.id) {
                         address = action.payload.address;
                     }
                     return address;
@@ -33,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_ADDRESS:
             return {
                 ...state,
-                addresses: state.addresses.filter(address => address.ID !== action.payload)
+                addresses: state.addresses.filter(address => address.id !== action.payload)
             };
 
         default:

@@ -1,7 +1,8 @@
 import { GET_ITEM, GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from '../actions/types';
 
 const initialState = {
-    items: []
+    items: [],
+    item: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_ITEM:
             return {
+                ...state,
                 item: action.payload
             };
         case ADD_ITEM:
@@ -24,8 +26,8 @@ export default function (state = initialState, action) {
         case UPDATE_ITEM:
             return {
                 ...state,
-                items: state.projects.map((item) => {
-                    if (action.payload.id === item.ID) {
+                items: state.items.map((item) => {
+                    if (action.payload.item.id === item.id) {
                         item = action.payload.item;
                     }
                     return item;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_ITEM:
             return {
                 ...state,
-                items: state.items.filter(item => item.ID !== action.payload)
+                items: state.items.filter(item => item.id !== action.payload)
             };
 
         default:

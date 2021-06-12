@@ -1,7 +1,8 @@
 import { GET_TOWN, GET_TOWNS, ADD_TOWN, UPDATE_TOWN, DELETE_TOWN } from '../actions/types';
 
 const initialState = {
-    towns: []
+    towns: [],
+    town: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,7 @@ export default function (state = initialState, action) {
             };
         case GET_TOWN:
             return {
+                ...state,
                 town: action.payload
             };
         case ADD_TOWN:
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 towns: state.towns.map((town) => {
-                    if (action.payload.id === town.ID) {
+                    if (action.payload.town.id === town.id) {
                         town = action.payload.town;
                     }
                     return town;
@@ -34,7 +36,7 @@ export default function (state = initialState, action) {
         case DELETE_TOWN:
             return {
                 ...state,
-                towns: state.towns.filter(town => town.ID !== action.payload)
+                towns: state.towns.filter(town => town.id !== action.payload)
             };
 
         default:
