@@ -19,7 +19,8 @@ import {
 } from '@coreui/react'
 
 import { connect } from 'react-redux';
-import { getCaseTypes, deleteCaseType } from '../../store/actions/caseTypeActions';
+import { getVehicleModels, deleteVehicleModel } from '../../store/actions/vehicleModelActions';
+import { getVehicleBrand } from '../../store/actions/vehicleBrandActions';
 
 const getBadge = status => {
   switch (status) {
@@ -34,7 +35,11 @@ const getBadge = status => {
 const fields = [
   {
     key: 'name',
-    label: 'Kasa Tipi'
+    label: 'Araç Model'
+  },
+  {
+    key: 'vehiclebrand',
+    label: 'Araç Markası - Kategorisi'
   },
   {
     key: 'options',
@@ -42,54 +47,58 @@ const fields = [
   },
 ]
 
-const CaseTypes = (props) => {
+const VehicleModels = (props) => {
   const history = useHistory()
   const queryPage = useLocation().search.match(/page=([0-9]+)/, '')
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1)
   const [page, setPage] = useState(currentPage)
+  const [items, setItems] = useState([])
 
   const pageChange = newPage => {
-    currentPage !== newPage && history.push(`/caseTypes?page=${newPage}`)
+    currentPage !== newPage && history.push(`/vehicleModels?page=${newPage}`)
   }
 
   useEffect(() => {
-    props.getCaseTypes();
+    props.getVehicleModels();
 
     currentPage !== page && setPage(currentPage)
   }, [currentPage, page])
 
   useEffect(() => {
-    if (props.caseType.caseTypes) {
+    if (props.vehicleModel.vehicleModels) {
+      props.vehicleModel.vehicleModels.map(vehicleModel => {
+        vehicleModel.vehiclebrand = `${vehicleModel.vehicleBrand.name} - ${vehicleModel.vehicleBrand.vehicleCategory.name}`;
+      });
+      setItems(props.vehicleModel.vehicleModels);
     }
 
-  }, [props.caseType.caseTypes])
+  }, [props.vehicleModel.vehicleModels])
 
   const deleteById = (id) => {
-    props.deleteCaseType(id);
+    props.deleteVehicleModel(id);
   }
 
   return (
     <div>
       <CRow>
         <CCol col="3" sm="3" md="3" xl="3" className="mb-3 mb-xl-0">
-          <CButton block color="primary" to="add-caseType">Kasa Tipi Ekle</CButton>
+          <CButton block color="primary" to="add-vehicleModel">Araç Modeli Ekle</CButton>
         </CCol>
       </CRow>
       <CRow>
         <CCol>
           <CCard>
             <CCardHeader>
-              Kasa Tipleri
+              Araç Modelleri
         </CCardHeader>
             <CCardBody>
               <CDataTable
-                items={props.caseType.caseTypes}
+                items={items}
                 fields={fields}
                 hover
                 striped
                 bordered
                 size="sm"
-                // onRowClick={(item) => history.push(`/edit-caseType/${item.id}`)}
                 itemsPerPage={10}
                 pagination
                 scopedSlots={{
@@ -101,7 +110,7 @@ const CaseTypes = (props) => {
                             Seçenekler
                           </CDropdownToggle>
                           <CDropdownMenu>
-                            <CButton block color="warning" to={`/edit-caseType/${item.id}`}>Düzenle</CButton>
+                            <CButton block color="warning" to={`/edit-vehicleModel/${item.id}`}>Düzenle</CButton>
                             <CButton block color="danger" onClick={() => deleteById(item.id)}>Sil</CButton>
                           </CDropdownMenu>
                         </CDropdown>
@@ -119,7 +128,8 @@ const CaseTypes = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  caseType: state.caseType
+  vehicleModel: state.vehicleModel,
+  vehicleBrand: state.vehicleBrand
 });
 
-export default connect(mapStateToProps, { getCaseTypes, deleteCaseType })(CaseTypes);
+export default connect(mapStateToProps, { getVehicleModels, deleteVehicleModel, getVehicleBrand })(VehicleModels);

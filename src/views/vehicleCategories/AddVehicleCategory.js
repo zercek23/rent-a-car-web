@@ -33,37 +33,21 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { connect } from 'react-redux';
-import { getCaseType, updateCaseType } from '../../store/actions/caseTypeActions';
+import { addVehicleCategory } from 'src/store/actions/vehicleCategoryActions';
+import { Redirect } from "react-router-dom";
 
-const EditCaseType = (props) => {
+const AddVehicleCategory = (props) => {
 
-    const [caseType, setCaseType] = useState({});
-    // const user2 = usersData.find( user => user.id.toString() === match.params.id)
-    const userDetails = caseType ? Object.entries(caseType) :
-        [['id', (<span><CIcon className="text-muted" name="cui-icon-ban" /> Not found</span>)]]
-
-    useEffect(() => {
-        props.getCaseType(props.match.params.id);
-    }, [])
-
-    useEffect(() => {
-        if (props.caseType.caseType) {
-            setCaseType(props.caseType.caseType);
-        }
-    }, [props.caseType.caseType])
+    const [vehicleCategory, setVehicleCategory] = useState({});
 
     const onChange = (e) => {
-        setCaseType({...caseType ,[e.target.name]: e.target.value});
+        setVehicleCategory({ ...vehicleCategory, [e.target.name]: e.target.value });
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        props.updateCaseType(caseType);
-        props.history.push("/caseTypes");
-    }
-
-    const resetForm = () => {
-        setCaseType({});
+        props.addVehicleCategory(vehicleCategory);
+        props.history.push("/vehicleCategories");
     }
 
     return (
@@ -72,19 +56,19 @@ const EditCaseType = (props) => {
                 <CCol xs="12" sm="12">
                     <CCard>
                         <CCardHeader>
-                        Kasa Tipi Düzenle
+                            Araç Kategorisi Ekle
                         </CCardHeader>
                         <CCardBody>
                             <CRow>
                                 <CCol xs="12">
                                     <CFormGroup>
-                                        <CLabel htmlFor="name">Tip</CLabel>
-                                        <CInput type="text" name="name" placeholder="Tip" required value={caseType.name} onChange={onChange} />
+                                        <CLabel htmlFor="name">Kategori İsmi</CLabel>
+                                        <CInput type="text" placeholder="Kategori İsmi" required name="name" onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
                             <CButton type="submit" size="sm" color="primary"><CIcon name="cil-scrubber" /> Kaydet</CButton>
-                            <CButton type="reset" size="sm" color="danger" onClick={resetForm}><CIcon name="cil-ban" /> Resetle</CButton>
+                            <CButton type="reset" size="sm" color="danger"><CIcon name="cil-ban" /> Resetle</CButton>
                         </CCardBody>
                     </CCard>
                 </CCol>
@@ -95,7 +79,9 @@ const EditCaseType = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    caseType: state.caseType
+    vehicleCategory: state.vehicleCategory,
+    auth: state.auth
 });
 
-export default connect(mapStateToProps, { getCaseType, updateCaseType })(EditCaseType);
+export default connect(mapStateToProps, { addVehicleCategory })(AddVehicleCategory);
+

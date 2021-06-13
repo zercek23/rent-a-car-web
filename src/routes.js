@@ -53,6 +53,22 @@ const CaseTypes = React.lazy(() => import('./views/caseTypes/CaseTypes'));
 const AddCaseType = React.lazy(() => import('./views/caseTypes/AddCaseType'));
 const EditCaseType = React.lazy(() => import('./views/caseTypes/EditCaseType'));
 
+const VehicleCategories = React.lazy(() => import('./views/vehicleCategories/VehicleCategories'));
+const AddVehicleCategory = React.lazy(() => import('./views/vehicleCategories/AddVehicleCategory'));
+const EditVehicleCategory = React.lazy(() => import('./views/vehicleCategories/EditVehicleCategory'));
+
+const VehicleBrands = React.lazy(() => import('./views/vehicleBrands/VehicleBrands'));
+const AddVehicleBrand = React.lazy(() => import('./views/vehicleBrands/AddVehicleBrand'));
+const EditVehicleBrand = React.lazy(() => import('./views/vehicleBrands/EditVehicleBrand'));
+
+const VehicleModels = React.lazy(() => import('./views/vehicleModels/VehicleModels'));
+const AddVehicleModel = React.lazy(() => import('./views/vehicleModels/AddVehicleModel'));
+const EditVehicleModel = React.lazy(() => import('./views/vehicleModels/EditVehicleModel'));
+
+const Vehicles = React.lazy(() => import('./views/vehicles/Vehicles'));
+const AddVehicle = React.lazy(() => import('./views/vehicles/AddVehicle'));
+const EditVehicle = React.lazy(() => import('./views/vehicles/EditVehicle'));
+
 const routes = [
   { path: '/', exact: true, name: 'Ana Sayfa' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
@@ -102,9 +118,21 @@ const routes = [
   { path: '/gearTypes', exact: true, name: 'Vites Tipleri', component: GearTypes },
   { path: '/add-gearType', exact: true, name: 'Vites Tipi Ekle', component: AddGearType },
   { path: '/edit-gearType/:id', exact: true, name: 'Vites Tipi Düzenle', component: EditGearType },
-  { path: '/caseTypes', exact: true, name: 'Vites Tipleri', component: CaseTypes },
-  { path: '/add-caseType', exact: true, name: 'Vites Tipi Ekle', component: AddCaseType },
-  { path: '/edit-caseType/:id', exact: true, name: 'Vites Tipi Düzenle', component: EditCaseType },
+  { path: '/caseTypes', exact: true, name: 'Kasa Tipleri', component: CaseTypes },
+  { path: '/add-caseType', exact: true, name: 'Kasa Tipi Ekle', component: AddCaseType },
+  { path: '/edit-caseType/:id', exact: true, name: 'Kasa Tipi Düzenle', component: EditCaseType },
+  { path: '/vehicleCategories', exact: true, name: 'Araç Kategorileri', component: VehicleCategories },
+  { path: '/add-vehicleCategory', exact: true, name: 'Araç Kategorisi Ekle', component: AddVehicleCategory },
+  { path: '/edit-vehicleCategory/:id', exact: true, name: 'Araç Kategorisi Düzenle', component: EditVehicleCategory },
+  { path: '/vehicleBrands', exact: true, name: 'Araç Kategorileri', component: VehicleBrands },
+  { path: '/add-vehicleBrand', exact: true, name: 'Araç Kategorisi Ekle', component: AddVehicleBrand },
+  { path: '/edit-vehicleBrand/:id', exact: true, name: 'Araç Kategorisi Düzenle', component: EditVehicleBrand },
+  { path: '/vehicleModels', exact: true, name: 'Araç Kategorileri', component: VehicleModels },
+  { path: '/add-vehicleModel', exact: true, name: 'Araç Kategorisi Ekle', component: AddVehicleModel },
+  { path: '/edit-vehicleModel/:id', exact: true, name: 'Araç Kategorisi Düzenle', component: EditVehicleModel },
+  { path: '/vehicles', exact: true, name: 'Araç Kategorileri', component: Vehicles },
+  { path: '/add-vehicle', exact: true, name: 'Araç Kategorisi Ekle', component: AddVehicle },
+  { path: '/edit-vehicle/:id', exact: true, name: 'Araç Kategorisi Düzenle', component: EditVehicle },
 ];
 
 export default routes;

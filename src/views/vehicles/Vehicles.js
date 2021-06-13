@@ -19,7 +19,8 @@ import {
 } from '@coreui/react'
 
 import { connect } from 'react-redux';
-import { getCaseTypes, deleteCaseType } from '../../store/actions/caseTypeActions';
+import { getVehicles, deleteVehicle } from '../../store/actions/vehicleActions';
+import { getVehicleBrand } from '../../store/actions/vehicleBrandActions';
 
 const getBadge = status => {
   switch (status) {
@@ -33,8 +34,28 @@ const getBadge = status => {
 
 const fields = [
   {
-    key: 'name',
-    label: 'Kasa Tipi'
+    key: 'fueltypename',
+    label: 'Benzin Tipi'
+  },
+  {
+    key: 'geartypename',
+    label: 'Vites Tipi'
+  },
+  {
+    key: 'vehiclemodelname',
+    label: 'Araç Modeli'
+  },
+  {
+    key: 'vehiclebrandname',
+    label: 'Araç Markası'
+  },
+  {
+    key: 'vehiclecategoryname',
+    label: 'Araç Kategorisi'
+  },
+  {
+    key: 'colorname',
+    label: 'Renk'
   },
   {
     key: 'options',
@@ -42,54 +63,69 @@ const fields = [
   },
 ]
 
-const CaseTypes = (props) => {
+const Vehicles = (props) => {
   const history = useHistory()
   const queryPage = useLocation().search.match(/page=([0-9]+)/, '')
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1)
   const [page, setPage] = useState(currentPage)
+  const [items, setItems] = useState([])
 
   const pageChange = newPage => {
-    currentPage !== newPage && history.push(`/caseTypes?page=${newPage}`)
+    currentPage !== newPage && history.push(`/vehicles?page=${newPage}`)
   }
 
   useEffect(() => {
-    props.getCaseTypes();
 
     currentPage !== page && setPage(currentPage)
   }, [currentPage, page])
 
   useEffect(() => {
-    if (props.caseType.caseTypes) {
+    props.getVehicles();
+  }, [])
+  
+  useEffect(() => {
+    
+    if (props.vehicle.vehicles) {
+      console.log('geldi')
+      props.vehicle.vehicles.map(vehicle => {
+        vehicle.colorname = vehicle.color.name;
+        vehicle.fueltypename = vehicle.fuelType.name;
+        vehicle.geartypename = vehicle.gearType.name;
+        vehicle.vehiclemodelname = vehicle.vehicleModel.name;
+        vehicle.vehiclebrandname = vehicle.vehicleModel.vehicleBrand.name;
+        vehicle.vehiclecategoryname = vehicle.vehicleModel.vehicleBrand.vehicleCategory.name;
+
+      });
+      setItems(props.vehicle.vehicles)
     }
 
-  }, [props.caseType.caseTypes])
+  }, [props.vehicle.vehicles])
 
   const deleteById = (id) => {
-    props.deleteCaseType(id);
+    props.deleteVehicle(id);
   }
 
   return (
     <div>
       <CRow>
         <CCol col="3" sm="3" md="3" xl="3" className="mb-3 mb-xl-0">
-          <CButton block color="primary" to="add-caseType">Kasa Tipi Ekle</CButton>
+          <CButton block color="primary" to="add-vehicle">Araç Ekle</CButton>
         </CCol>
       </CRow>
       <CRow>
         <CCol>
           <CCard>
             <CCardHeader>
-              Kasa Tipleri
+              Araçlar
         </CCardHeader>
             <CCardBody>
               <CDataTable
-                items={props.caseType.caseTypes}
+                items={items}
                 fields={fields}
                 hover
                 striped
                 bordered
                 size="sm"
-                // onRowClick={(item) => history.push(`/edit-caseType/${item.id}`)}
                 itemsPerPage={10}
                 pagination
                 scopedSlots={{
@@ -101,7 +137,7 @@ const CaseTypes = (props) => {
                             Seçenekler
                           </CDropdownToggle>
                           <CDropdownMenu>
-                            <CButton block color="warning" to={`/edit-caseType/${item.id}`}>Düzenle</CButton>
+                            <CButton block color="warning" to={`/edit-vehicle/${item.id}`}>Düzenle</CButton>
                             <CButton block color="danger" onClick={() => deleteById(item.id)}>Sil</CButton>
                           </CDropdownMenu>
                         </CDropdown>
@@ -119,7 +155,8 @@ const CaseTypes = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  caseType: state.caseType
+  vehicle: state.vehicle,
+  vehicleBrand: state.vehicleBrand
 });
 
-export default connect(mapStateToProps, { getCaseTypes, deleteCaseType })(CaseTypes);
+export default connect(mapStateToProps, { getVehicles, deleteVehicle, getVehicleBrand })(Vehicles);

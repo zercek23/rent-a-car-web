@@ -33,37 +33,37 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { connect } from 'react-redux';
-import { getCaseType, updateCaseType } from '../../store/actions/caseTypeActions';
+import { getVehicleCategory, updateVehicleCategory } from '../../store/actions/vehicleCategoryActions';
 
-const EditCaseType = (props) => {
+const EditVehicleCategory = (props) => {
 
-    const [caseType, setCaseType] = useState({});
+    const [vehicleCategory, setVehicleCategory] = useState({});
     // const user2 = usersData.find( user => user.id.toString() === match.params.id)
-    const userDetails = caseType ? Object.entries(caseType) :
+    const userDetails = vehicleCategory ? Object.entries(vehicleCategory) :
         [['id', (<span><CIcon className="text-muted" name="cui-icon-ban" /> Not found</span>)]]
 
     useEffect(() => {
-        props.getCaseType(props.match.params.id);
+        props.getVehicleCategory(props.match.params.id);
     }, [])
 
     useEffect(() => {
-        if (props.caseType.caseType) {
-            setCaseType(props.caseType.caseType);
+        if (props.vehicleCategory.vehicleCategory) {
+            setVehicleCategory(props.vehicleCategory.vehicleCategory);
         }
-    }, [props.caseType.caseType])
+    }, [props.vehicleCategory.vehicleCategory])
 
     const onChange = (e) => {
-        setCaseType({...caseType ,[e.target.name]: e.target.value});
+        setVehicleCategory({...vehicleCategory ,[e.target.name]: e.target.value});
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        props.updateCaseType(caseType);
-        props.history.push("/caseTypes");
+        props.updateVehicleCategory(vehicleCategory);
+        props.history.push("/vehicleCategories");
     }
 
     const resetForm = () => {
-        setCaseType({});
+        setVehicleCategory({});
     }
 
     return (
@@ -72,14 +72,14 @@ const EditCaseType = (props) => {
                 <CCol xs="12" sm="12">
                     <CCard>
                         <CCardHeader>
-                        Kasa Tipi Düzenle
+                        Araç Kategorisi Düzenle
                         </CCardHeader>
                         <CCardBody>
                             <CRow>
                                 <CCol xs="12">
                                     <CFormGroup>
-                                        <CLabel htmlFor="name">Tip</CLabel>
-                                        <CInput type="text" name="name" placeholder="Tip" required value={caseType.name} onChange={onChange} />
+                                        <CLabel htmlFor="name">Kategori İsmi</CLabel>
+                                        <CInput type="text" name="name" placeholder="Tip" required value={vehicleCategory.name} onChange={onChange} />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
@@ -95,7 +95,7 @@ const EditCaseType = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    caseType: state.caseType
+    vehicleCategory: state.vehicleCategory
 });
 
-export default connect(mapStateToProps, { getCaseType, updateCaseType })(EditCaseType);
+export default connect(mapStateToProps, { getVehicleCategory, updateVehicleCategory })(EditVehicleCategory);

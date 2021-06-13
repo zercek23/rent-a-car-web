@@ -58,7 +58,8 @@ const EditFuelType = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        props.updateFuelType(fuelType.id, fuelType);
+        props.updateFuelType(fuelType);
+        props.history.push("/fuelTypes");
     }
 
     const resetForm = () => {

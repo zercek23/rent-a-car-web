@@ -42,6 +42,30 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
+    name: 'Araç Kategorileri',
+    to: '/vehicleCategories',
+    icon: 'cil-drop',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Araç Markaları',
+    to: '/vehicleBrands',
+    icon: 'cil-drop',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Araç Modelleri',
+    to: '/vehicleModels',
+    icon: 'cil-drop',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Araçlar',
+    to: '/vehicles',
+    icon: 'cil-drop',
+  },
+  {
+    _tag: 'CSidebarNavItem',
     name: 'Typography',
     to: '/theme/typography',
     icon: 'cil-pencil',
