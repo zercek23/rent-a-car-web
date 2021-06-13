@@ -26,6 +26,7 @@ const Vehicles = React.lazy(() => import('./views/pages/vehicles/Vehicles'));
 const Contact = React.lazy(() => import('./views/pages/contact/Contact'));
 const About = React.lazy(() => import('./views/pages/aboutUs/AboutUs'));
 const SingleCar = React.lazy(() => import('./views/pages/singleCar/SingleCar'));
+const Book = React.lazy(() => import('./views/pages/book/Book'));
 
 
 
@@ -65,6 +66,7 @@ const App = (props) => {
             <Route exact path="/rent-a-car/contact" name="Contact" render={props => <Contact {...props} />} />
             <Route exact path="/rent-a-car/about" name="About" render={props => <About {...props} />} />
             <Route exact path="/rent-a-car/vehicles/:vehicleId" name="SingleCar" render={props => <SingleCar {...props} />} />
+            <Route exact path="/rent-a-car/vehicles/book/:vehicleId" name="Book" render={props => <Book {...props} />} />
             <Route path="/" name="Home" render={props => {
               if (authenticated) {
                 return (

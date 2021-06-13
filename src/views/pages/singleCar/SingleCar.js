@@ -11,6 +11,7 @@ import shift from '../../../assets/icons/shift.png';
 import carImg from '../../../assets/icons/car.png';
 import dollarSign from '../../../assets/icons/dollar-sign-symbol-bold-text.png';
 import { TweenMax, Power3 } from 'gsap';
+import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { openNavbar, openFooter } from '../../../store/actions/viewActions';
@@ -43,11 +44,11 @@ const SingleCar = (props) => {
   let currentCar;
 
   cars.forEach((car) => {
-    if(car.id === Number(vehicleId)) {
-      currentCar = car; 
+    if (car.id === Number(vehicleId)) {
+      currentCar = car;
     }
   });
-  
+
   let similarArray = [];
 
   cars.forEach((car, index) => {
@@ -60,7 +61,7 @@ const SingleCar = (props) => {
 
   let shortSimilarArray = similarArray.slice(0, 3);
 
-  
+
 
   let carImgContainer = useRef(null);
   let carDescriptionContainer = useRef(null);
@@ -89,57 +90,57 @@ const SingleCar = (props) => {
     <div className='SingleCar top-offset' >
       {scrolTop()}
       {cars.map(car => {
-        if(car.id === Number(vehicleId)){
+        if (car.id === Number(vehicleId)) {
           return (
             <div key={car.id} className='SingleCarContainer' >
               <div
                 className='SingleCarImgs box-shadow'
-                ref={el => {carImgContainer = el}}
+                ref={el => { carImgContainer = el }}
               >
-                <img 
-                  src={car.images[0]} 
+                <img
+                  src={car.images[0]}
                   alt={car.name}
                   className='SingleCarImg'
                 />
               </div>
-              <div 
-                className='SingleCarDescription box-shadow' 
-                ref={el => {carDescriptionContainer = el}}
+              <div
+                className='SingleCarDescription box-shadow'
+                ref={el => { carDescriptionContainer = el }}
               >
-                
+
                 <div className='SingleCarDescriptionH1'>
                   <h1>{car.name}</h1>
                 </div>
                 <div className='SingleCarSpecs' >
                   <div className='SingleCarSpec' >
-                    <img 
+                    <img
                       className='SingleCarSpecImg'
-                      src={user} 
+                      src={user}
                       alt='seats'
                     ></img>
                     <p>{car.seats} Seats</p>
                   </div>
                   <div className='SingleCarSpec' >
-                    <img 
+                    <img
                       className='SingleCarSpecImg'
-                      src={shift} 
+                      src={shift}
                       alt='transmission'
                     ></img>
                     <p>Auto</p>
                     <p></p>
                   </div>
                   <div className='SingleCarSpec' >
-                    <img 
+                    <img
                       className='SingleCarSpecImg'
-                      src={carImg} 
+                      src={carImg}
                       alt='car doors'
                     ></img>
                     <p>{car.doors} Doors</p>
                   </div>
                   <div className='SingleCarSpec' >
-                    <img 
+                    <img
                       className='SingleCarSpecImg'
-                      src={dashboard} 
+                      src={dashboard}
                       alt='mpg dashboard'
                     ></img>
                     <p>{car.mpg} mpg</p>
@@ -188,26 +189,32 @@ const SingleCar = (props) => {
                     <img
                       src={dollarSign}
                       alt='dollar sign'
-                    > 
+                    >
                     </img>
                     <h2>{car.price} <span>Per Day</span></h2>
                   </div>
-                  <ButtonGreen
-                    text='Book Now'
-                    style={{
-                      width: '100px',
-                      margin: '8px 0 40px 0',
-                    }}
-                    onClick={() => {
-                      console.log('YOU WIN: https://www.youtube.com/watch?v=DLzxrzFCyOs&ab_channel=AllKindsOfStuff');
-                      alert(congratsMsg + car.name + rewardMsg);
-                    }}
-                  />
+                  <Link
+                    to={`/rent-a-car/vehicles/book/${vehicleId}`}
+                    className='RouterLink'
+                  >
+                    <ButtonGreen
+                      text='Book Now'
+                      style={{
+                        width: '100px',
+                        margin: '8px 0 40px 0',
+                      }}
+                      onClick={() => {
+                        console.log('YOU WIN: https://www.youtube.com/watch?v=DLzxrzFCyOs&ab_channel=AllKindsOfStuff');
+                        alert(congratsMsg + car.name + rewardMsg);
+                      }}
+                    />
+                  </Link>
+
                 </div>
               </div>
-              <div 
-                className='SingleCarSimilarH3' 
-                ref={el => {similarCarsH1 = el}}
+              <div
+                className='SingleCarSimilarH3'
+                ref={el => { similarCarsH1 = el }}
               >
                 <h3>Similar Vehicles</h3>
               </div>
@@ -234,3 +241,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { openNavbar, openFooter })(SingleCar);
+
