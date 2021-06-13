@@ -351,17 +351,17 @@ const cars = [
     price: 45,
     images: [kiaRioWhite],
   },
-  {
-    id: 30,
-    name: '2021 Toyota Supra A91',
-    type: 'coupe',
-    seats: 2,
-    doors: 2,
-    engine: 'auto',
-    mpg: '3',
-    price: 70,
-    images: [toyotaSupraWhite],
-  },
+  // {
+  //   id: 30,
+  //   name: '2021 Toyota Supra A91',
+  //   type: 'coupe',
+  //   seats: 2,
+  //   doors: 2,
+  //   engine: 'auto',
+  //   mpg: '3',
+  //   price: 70,
+  //   images: [toyotaSupraWhite],
+  // },
 ];
 
 export default cars;

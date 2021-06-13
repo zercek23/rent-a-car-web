@@ -9,7 +9,8 @@ import {
   CHeaderNavLink,
   CSubheader,
   CBreadcrumbRouter,
-  CLink
+  CLink,
+  CButton
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
@@ -22,6 +23,7 @@ import {
   TheHeaderDropdownNotif,
   TheHeaderDropdownTasks
 }  from './index'
+import { removeUserData } from 'src/helpers/userAuth'
 
 const TheHeader = () => {
   const dispatch = useDispatch()
@@ -65,12 +67,18 @@ const TheHeader = () => {
         </CHeaderNavItem>
       </CHeaderNav>
 
-      <CHeaderNav className="px-3">
+      {/* <CHeaderNav className="px-3">
         <TheHeaderDropdownNotif/>
         <TheHeaderDropdownTasks/>
         <TheHeaderDropdownMssg/>
         <TheHeaderDropdown/>
-      </CHeaderNav>
+      </CHeaderNav> */}
+      <CButton style={{height: 30}} color="danger" onClick={() => {
+        removeUserData();
+        window.location.reload();
+      }}>
+        Çıkış Yap
+      </CButton>
 
       <CSubheader className="px-3 justify-content-between">
         <CBreadcrumbRouter 

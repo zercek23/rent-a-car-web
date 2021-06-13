@@ -12,6 +12,7 @@ import {
     CLabel,
     CSelect,
     CRow,
+    CInputFile
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { connect } from 'react-redux';
@@ -23,6 +24,8 @@ import { getFuelTypes } from 'src/store/actions/fuelTypeActions';
 import { getGearTypes } from 'src/store/actions/gearTypeActions';
 import { getCaseTypes } from 'src/store/actions/caseTypeActions';
 import { Redirect } from "react-router-dom";
+import cars from '../../helpers/cars'
+import toyotaSupraWhite from '../../assets/car-imgs/toyota-supra-1.png';
 
 const AddVehicleModel = (props) => {
 
@@ -38,13 +41,26 @@ const AddVehicleModel = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        cars.push(
+            {
+                id: 30,
+                name: '2021 Toyota Supra A91',
+                type: 'coupe',
+                seats: 2,
+                doors: 2,
+                engine: 'auto',
+                mpg: '3',
+                price: 70,
+                images: [toyotaSupraWhite],
+            },
+        )
         props.addVehicleModel(vehicleModel);
-        props.history.push("/vehicleModels");
+        props.history.push("/");
     }
 
     useEffect(() => {
         if (props.vehicleBrand.vehicleBrands && props.vehicleBrand.vehicleBrands.length > 0) {
-            setVehicleModel({name: '', vehicleModelID: props.vehicleBrand.vehicleBrands[0].id});
+            setVehicleModel({ name: '', vehicleModelID: props.vehicleBrand.vehicleBrands[0].id });
         }
     }, [props.vehicleModel.vehicleModels])
 
@@ -58,7 +74,7 @@ const AddVehicleModel = (props) => {
     }, [])
 
     useEffect(() => {
-        console.log('vehicleModel',vehicleModel)
+        console.log('vehicleModel', vehicleModel)
     }, [vehicleModel])
 
     return (
@@ -116,25 +132,9 @@ const AddVehicleModel = (props) => {
                                             })}
                                         </CSelect>
                                     </CFormGroup>
-                                    <CFormGroup>
-                                        <CLabel htmlFor="select">Araç Markası</CLabel>
-                                        <CSelect custom name="vehicleBrandID" id="select" onChange={onChange}>
-                                            {props.vehicleBrand.vehicleBrands.map(vehicleBrand => {
-                                                return (
-                                                    <option key={vehicleBrand.id} value={vehicleBrand.id}>{vehicleBrand.name} - {/*vehicleBrand.vehicleCategory.name*/}</option>
-                                                )
-                                            })}
-                                        </CSelect>
-                                    </CFormGroup>
-                                    <CFormGroup>
-                                        <CLabel htmlFor="select">Araç Modeli</CLabel>
-                                        <CSelect custom name="vehicleBrandID" id="select" onChange={onChange}>
-                                            {props.vehicleBrand.vehicleBrands.map(vehicleBrand => {
-                                                return (
-                                                    <option key={vehicleBrand.id} value={vehicleBrand.id}>{vehicleBrand.name} - {/*vehicleBrand.vehicleCategory.name*/}</option>
-                                                )
-                                            })}
-                                        </CSelect>
+                                    <CFormGroup >
+                                        <CLabel col md="3" htmlFor="file-input">File input</CLabel>
+                                        <CInputFile id="file-input" name="file-input" />
                                     </CFormGroup>
                                 </CCol>
                             </CRow>
