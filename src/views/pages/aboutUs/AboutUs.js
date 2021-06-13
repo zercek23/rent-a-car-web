@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import ButtonGreen from  '../../components/ButtonGreen/ButtonGreen';
-import headerSvg from '../../../assets/imgs/undraw_city_driver_jh2h.svg';
+import headerSvg from '../../../assets/imgs/rentACar.png';
 import { Accordion,  AccordionSummary, AccordionDetails, Typography, makeStyles } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
@@ -27,10 +27,16 @@ const AboutUs = (props) => {
     <div className='top-offset AboutUs'>
       <header className='AboutUsHeader  box-shadow'>
         <div className='AboutUsHeaderText' >
-          <h1><span className='text-green'>Premium</span> Car Rentals</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis imperdiet nisl, eget vulputate velit aliquam in.Vivamus iaculis aliquam risus. Sed tempus mattis erat, et rutrum orci mattis at. Pellentesque pulvinar, libero eget mattis dictum, ex nulla pulvinar diam, sit amet iaculis orci dui quis odio. Sed vel quam aliquet, fringilla mauris at, tempus eros.</p>
-          <ButtonGreen
-            text='View Vehicles'
+          <h1 className='text-green'>Rent a Car</h1>
+          <p>Günümüzde birçok işletme araç satış ve kiralama hizmetlerinde yaptıkları
+satış, randevu ve hizmetleri düzenli veriler şeklinde tutmakta zorlanmaktadırlar.
+Sadece bununla kalmayıp bayi-bayi büyüyen bir firmada bu işlemler oldukça zor
+yapılmaktadır. Bu tarz firmalar öncelikle sağlam bir yazılım altyapısı oluşturarak
+şirketini güvendiği yazılıma teslim etmektedirler. Oldukça zahmetli ve içerikli bir
+yapıda olsa firmanın olmazsa olmazı haline gelmiştir. Bizim buradaki amacımız bu
+tarz firmalara değinerek ihtiyaçlarını basit yollarla karşılayabilmektir.</p>          
+        <ButtonGreen
+            text='Araçlara Git'
             component={Link}
             to='/vehicles'
           />
@@ -39,20 +45,27 @@ const AboutUs = (props) => {
       </header>
 
       <div className='AboutUsAccordionHeading' >
-        <h3>Frequently Asked Questions</h3>
+        <h3>Biz Kimiz</h3>
       </div>
       <div className='AboutUsAccordion'>
-        <h4>Payment</h4>
+        <h4>Öğrenciler</h4>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMore/>}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading} >What forms of payment are accepted for renting a car?</Typography>
+            <Typography className={classes.heading} >Mehmet Nuri Hanedar</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
+            <Typography>02.06.1999 da İstanbul’da doğdu. İlk ve orta okulu Yavuz
+Selim ilk ve orta okulunda okudu. Liseyi Sultanahmet Anadolu Teknik Lisesinde
+Bilgisayar Programcılığı bölümünde web tasarım ve programlama alanında okuyarak
+2017 yılında tamamladı. Aynı yıl Sakarya Üniversitesi Bilgisayar Mühendisliği
+bölümünü kazandı. 2019 yazında Vis Teknoloji ve Bilişim Hizmetlerinde yazılım
+stajını tamamladı. 2020 yazında donanım stajını Uitsec International Bilgi
+Teknolojilerinde yapmıştır. 2021 yılının başlarında Xtanbul software firmasında fullstack developer olarak iş hayatına atılmıştır. Sakarya Üniversitesi Bilgisayar
+Mühendisliği bölümünden 2021 yılında mezun olması beklenmektedir.</Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -61,10 +74,16 @@ const AboutUs = (props) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading} >Is a car rental deposit required?</Typography>
+            <Typography className={classes.heading} >Burak Bayram</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
+            <Typography>31.05.1999 da İstanbul’un Bakırköy ilçesinde doğdu. İlköğretim
+eğitimini 75. Yıl İlköğretim Okulunda aldı. Lise eğitimini Gaziosmanpaşa Anadolu
+Lisesinde tamamlayarak 2017 yılında mezun oldu. 2017 yılında Sakarya Üniversitesi
+Bilgisayar Mühendisliği Bölümü’nü kazandı. 2019 yılında PlusClouds: Cloud
+Computing bulut teknolojileri hizmeti veren şirkette stajını yapmıştır. Sakarya
+Üniversitesi Bilgisayar Mühendisliği bölümünden 2021 yılında mezun olması
+beklenmektedir</Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -73,10 +92,15 @@ const AboutUs = (props) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading} >Can I pay for the rental of a car for another individual?</Typography>
+            <Typography className={classes.heading} >Kaan Gecü</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
+            <Typography>13.02.1998’da İstanbul’da doğdu. İlk, orta ve lise öğrenimini İstanbul’da
+tamamladı. 2017 yılında Sakarya Üniversitesi Bilgisayar Mühendisliği bölümünü
+kazandı. 2020 yılında Erasmus programı ile Fontys Hogescholen’da eğitim gördü.
+2020 yılının Eylül ayında Data is Power şirketinde yazılım stajını tamamladı.
+Sakarya Üniversitesi Bilgisayar Mühendisliği bölümünden 2021 yılında mezun
+olması beklenmektedir</Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -85,72 +109,15 @@ const AboutUs = (props) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading} >Do you accept Cash or Money Orders?</Typography>
+            <Typography className={classes.heading} >Murad Abaszada</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
-          </AccordionDetails>
-        </Accordion>
-        <h4>Preparation</h4>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMore/>}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading} >What steps are being taken to clean rental cars?</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMore/>}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading} >What is your pet policy?</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
-          </AccordionDetails>
-        </Accordion>
-        <h4>Reservation</h4>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMore/>}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading} >What is the current car rental process?</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMore/>}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading} >Can I modify, extend, or cancel my reservation?</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMore/>}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading} >What are your renter requirements for renting in the US and Canada?</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>Morbi vel sapien egestas nisi ornare convallis at et urna. Morbi vulputate a tellus vitae lacinia. Sed fermentum justo non nunc commodo, eu commodo quam fermentum. Aliquam egestas maximus neque, at finibus lorem sollicitudin vel. Aenean nibh ante, vulputate ut velit eu, tristique rutrum nunc.</Typography>
+            <Typography>11.12.1998'de Azerbaycanın başkenti Baküde doğdu.
+Üniversite öncesi eğitiminin tamamını Azerbaycan Güzel Sanatlar lisesinde aldı.
+2016 yılında lise eğitimini tamamladıktan sonra aynı yılda Sakarya Üniversitesi
+Bilgisayar Mühendisliği bölümünde eğitime başladı. 2020 yılında stajını Senkron
+Yazılım Hizmetleri A. Ş. şirketinde full-stack developer olarak yaptı. Şu an Sakarya
+Üniversitesinde son sınıf öğrencisidir.</Typography>
           </AccordionDetails>
         </Accordion>
       </div>

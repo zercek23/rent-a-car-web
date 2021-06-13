@@ -65,11 +65,11 @@ export default function VehicleCard(props) {
           </div>
           <div className='VehicleSpecs-spec'>
             <img src={dashboard} alt='dashboard' style={{width: '20px'}}/>         
-            <p className='VehicleSpecs-p'>{props.mpg} mpg</p>
+            <p className='VehicleSpecs-p'>{props.mpg} km/s</p>
           </div>
           <div className='VehicleSpecs-spec'>
             <img src={dollarSign} alt='dollar sign' style={{width: '20px'}}/>        
-            <p className='VehicleSpecs-p'>{props.price} Per Day</p>
+            <p className='VehicleSpecs-p'>Günlük {props.price} TL</p>
           </div>
         </div>
       </div>

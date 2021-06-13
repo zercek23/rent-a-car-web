@@ -14,8 +14,8 @@ export default function MemberOffers () {
             alt='price tag icon'
             className='MemberOffers-card-icn'
           />
-          <h4>Weekend Special</h4>
-          <p>Get Weekend Special rates at <br/>participating locations.</p>
+          <h4>Haftasonu Fırsatı</h4>
+          <p>Haftasonu fırsatlarını kaçırmayın.</p>
         </div>
         <div className='MemberOffers-card'>
           <img 
@@ -23,8 +23,8 @@ export default function MemberOffers () {
             alt='price tag icon'
             className='MemberOffers-card-icn'
           />
-          <h4>Special Offers</h4>
-          <p>Don't miss our special offers by<br/>joining our mailing list. </p>
+          <h4>Özel  Fırsatlar</h4>
+          <p>Özel  fırsatlar kaçırmayın.</p>
         </div>
         <div className='MemberOffers-card'>
           <img 
@@ -32,8 +32,8 @@ export default function MemberOffers () {
             alt='price tag icon'
             className='MemberOffers-card-icn diamond'
           />
-          <h4>Get premium today!</h4>
-          <p>Earn points toward free rentals.</p>
+          <h4>Hemen Kiralayın</h4>
+          <p>Tek tıkla kolay kiralama.</p>
         </div>
       </div>
     </div>

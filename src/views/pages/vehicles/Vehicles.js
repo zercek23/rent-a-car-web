@@ -170,7 +170,7 @@ const Vehicles = (props) => {
       <div className='VehiclesFilter'>
         <div className='VehiclesFilterHeader' >
           <div className='VehiclesFilterText'>
-            <p>{filteredCars.length} Results Found</p>
+            <p>{filteredCars.length} Sonuç Bulundu</p>
           </div>
           <div className='VehiclesFilterButtons'>
             <Button 
@@ -181,7 +181,7 @@ const Vehicles = (props) => {
               endIcon={<FilterListIcon/>}
               onClick={handleFilterClick}
             >
-              Filter
+              Filtrele
             </Button>
             <Button 
               color='default' 
@@ -191,7 +191,7 @@ const Vehicles = (props) => {
               endIcon={<ExpandMoreIcon/>}
               onClick={handleSortClick}
             >
-              Sort
+              Sırala
             </Button>
             <Menu
               anchorEl={anchorEl}
@@ -211,12 +211,12 @@ const Vehicles = (props) => {
               <MenuItem
                 onClick={handlePriceLow}
               >
-                Price low to high
+                Fiyat Artan
               </MenuItem>
               <MenuItem
                 onClick={handlePriceHigh}
               >
-                Price high to low
+                Fiyat Azalan
               </MenuItem>
             </Menu>
           </div>

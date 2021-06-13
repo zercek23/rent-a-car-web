@@ -39,7 +39,7 @@ export default function JumboHeader() {
             ref={jumboContent}
           >
             <h1 className='JumboHeadingText'>
-              Find your perfect <span>rental car, fast!</span>
+              Kolay Araç Kiralama Servisi
             </h1>
             <FormFilter/>
           </div>

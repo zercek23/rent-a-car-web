@@ -31,7 +31,7 @@ export default function ContactForm() {
             htmlFor='name'
             className={classes.label}
           >
-            Full Name
+            Ad Soyad
           </InputLabel>
           <FilledInput
             id='name'
@@ -54,7 +54,7 @@ export default function ContactForm() {
             htmlFor='message'
             className={classes.label}
           >
-            Message
+            Mesajınız
           </InputLabel>
           <FilledInput
             id='message'
@@ -64,7 +64,7 @@ export default function ContactForm() {
         </FormControl>
       </ThemeProvider>
       <ButtonGreen
-        text='Send Message'
+        text='Mesajı Gönder'
         style={{
           width: '150px',
           margin: '0 auto',

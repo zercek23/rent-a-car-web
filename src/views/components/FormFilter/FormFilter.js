@@ -82,7 +82,7 @@ export default function FormFilter() {
           handleDateUpper={handleDateUpper}
         />
         <ButtonGreen 
-          text='Search'
+          text='Ara'
           to={{
             pathname: '/rent-a-car/vehicles',
             state: {

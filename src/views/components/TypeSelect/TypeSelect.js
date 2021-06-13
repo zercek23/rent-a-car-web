@@ -3,6 +3,8 @@ import { FormControl, InputLabel, Select } from '@material-ui/core';
 
 export default function TypeSelect(props) {
   //const classes = useStyles();
+  const carTypes = ["Otomobil","SUV","Motosiklet","Minivan","Ticari Araçlar","Kiralık Araçlar","Deniz Araçları","Hasarlı Araçlar","Klasik Araçlar","Modifiye Araçlar","Hava Araçları","ATV","UTV"]
+
 
   return (
     <FormControl className={props.formControl}>
@@ -13,7 +15,7 @@ export default function TypeSelect(props) {
           focused: props.labelFocused,
         }}
       >
-      Car Type
+      Araç Tipi
       </InputLabel>
       <Select
         native
@@ -27,12 +29,13 @@ export default function TypeSelect(props) {
         }}
       >
         <option aria-label='None' value=''/>
-        <option value='Coupe'>Coupe</option>
-        <option value='Convertable'>Convertable</option>
-        <option value='Mini Van'>Mini Van</option>
-        <option value='Sedan'>Sedan</option>
-        <option value='SUV'>SUV</option>
-        <option value='Truck'>Truck</option>
+
+        {carTypes.map((item)=>{
+          return (
+            <option value={item}>{item}</option>
+          )
+        })}
+        
       </Select>
     </FormControl>
   )

@@ -62,7 +62,6 @@ const SingleCar = (props) => {
   let shortSimilarArray = similarArray.slice(0, 3);
 
 
-
   let carImgContainer = useRef(null);
   let carDescriptionContainer = useRef(null);
   let similarCarsH1 = useRef(null)
@@ -113,37 +112,37 @@ const SingleCar = (props) => {
                 </div>
                 <div className='SingleCarSpecs' >
                   <div className='SingleCarSpec' >
-                    <img
+                    <img 
                       className='SingleCarSpecImg'
-                      src={user}
+                      src={user} 
                       alt='seats'
                     ></img>
-                    <p>{car.seats} Seats</p>
+                    <p>{car.seats} Koltuk</p>
                   </div>
                   <div className='SingleCarSpec' >
-                    <img
+                    <img 
                       className='SingleCarSpecImg'
-                      src={shift}
+                      src={shift} 
                       alt='transmission'
                     ></img>
-                    <p>Auto</p>
+                    <p>Otomatik</p>
                     <p></p>
                   </div>
                   <div className='SingleCarSpec' >
-                    <img
+                    <img 
                       className='SingleCarSpecImg'
-                      src={carImg}
+                      src={carImg} 
                       alt='car doors'
                     ></img>
-                    <p>{car.doors} Doors</p>
+                    <p>{car.doors} Kapılı</p>
                   </div>
                   <div className='SingleCarSpec' >
-                    <img
+                    <img 
                       className='SingleCarSpecImg'
-                      src={dashboard}
+                      src={dashboard} 
                       alt='mpg dashboard'
                     ></img>
-                    <p>{car.mpg} mpg</p>
+                    <p>{car.mpg} km/s</p>
                   </div>
                 </div>
                 <div className='SingleCarFeatures' >
@@ -151,7 +150,7 @@ const SingleCar = (props) => {
                     <CheckIcon
                       style={checkStyle}
                     />
-                    <p>Audio Input</p>
+                    <p>USB Girişi</p>
                   </div>
                   <div className='SingleCarFeature'>
                     <CheckIcon
@@ -163,25 +162,25 @@ const SingleCar = (props) => {
                     <CheckIcon
                       style={checkStyle}
                     />
-                    <p>Heated Seats</p>
+                    <p>Isıtmalı Koltuk</p>
                   </div>
                   <div className='SingleCarFeature'>
                     <CheckIcon
                       style={checkStyle}
                     />
-                    <p>All Wheel Drive</p>
+                    <p>Dijital Ekran</p>
                   </div>
                   <div className='SingleCarFeature'>
                     <CheckIcon
                       style={checkStyle}
                     />
-                    <p>A/C & Heating</p>
+                    <p>Klima</p>
                   </div>
                   <div className='SingleCarFeature'>
                     <CheckIcon
                       style={checkStyle}
                     />
-                    <p>Dual Airbags</p>
+                    <p>Çift Hava Yastığı</p>
                   </div>
                 </div>
                 <div className='SingleCarPrice' >

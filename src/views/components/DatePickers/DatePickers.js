@@ -17,7 +17,7 @@ export default function DatePickers(props) {
           emptyLabel=''
           format='MM/DD/yyyy'
           inputVariant='filled'
-          label='Start Date'
+          label='Başlangıç Tarihi'
         />
         <p className='DateDash' style={props.dashStyle}><b>-</b></p>
         <DatePicker
@@ -29,7 +29,7 @@ export default function DatePickers(props) {
           emptyLabel=''
           format='MM/DD/yyyy'
           inputVariant='filled'
-          label='End Date'
+          label='Bitiş Tarihi'
           allowKeyboardControl={true}
         />
       </div>

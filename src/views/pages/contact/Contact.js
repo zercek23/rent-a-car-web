@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import ContactForm from '../../components/ContractForm/ContactForm';
-import contactImg from  '../../../assets/imgs/undraw_contact_us_15o2.svg';
+import contactImg from  '../../../assets/imgs/telefon.png';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import StayCurrentPortraitOutlinedIcon from '@material-ui/icons/StayCurrentPortraitOutlined';
@@ -26,28 +26,24 @@ const Contact = (props) => {
           className='ContactHeaderImg'
         />
         <div className='ContactDetails  box-shadow' >
-          <h1>Contact Info</h1>
+          <h1>İletişim Bilgileri</h1>
           <div>
             <StayCurrentPortraitOutlinedIcon className='DetailsIcon' />
-            <p>(111)-222-3333</p>
+            <p>0555 555 55 55</p>
           </div>
           <div>
             <EmailOutlinedIcon className='DetailsIcon' />
-            <p>contact@rentacar.com</p>
+            <p>mail@rentacar.com</p>
           </div>
           <div>
             <LocationOnOutlinedIcon className='DetailsIcon' />
-            <p>1600 Pennsylvania Ave 20500</p>
-          </div>
-          <div>
-            <AccessTimeIcon className='DetailsIcon' />
-            <p>Monday - Saturday | 8:00 - 5:00</p>
+            <p>Serdivan/Sakarya</p>
           </div>
         </div>
       </header>
       <div className='ContactFormContainer   box-shadow' >
         <div className='ContactFormContainerH3' >
-          <h3>Contact Us</h3>
+          <h3>Bize Ulaşın</h3>
         </div>
         <ContactForm/>
       </div>

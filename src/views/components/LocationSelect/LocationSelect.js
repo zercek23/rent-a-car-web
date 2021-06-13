@@ -11,7 +11,7 @@ export default function LocationSelect(props) {
           focused: props.labelFocused,
         }}
       >
-        Location
+        Konum
       </InputLabel>
       <Select
         id='location'
@@ -25,12 +25,9 @@ export default function LocationSelect(props) {
         }}
       >
         <option aria-label='None' value=''/>
-        <option value='Denver'>Denver</option>
-        <option value='Las Vegas'>Las Vegas</option>
-        <option value='Los Angeles'>Los Angeles</option>
-        <option value='New York'>New York</option>
-        <option value='Orlando'>Orlando</option>
-        <option value='Raleigh'>Raleigh</option>
+        <option value='İstanbul'>İstanbul</option>
+        <option value='Ankara'>Ankara</option>
+        <option value='İzmir'>İzmir</option>
       </Select>
     </FormControl>
   )

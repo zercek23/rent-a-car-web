@@ -9,7 +9,7 @@ export default function PopularVehicles() {
   return (
     <div className='section top-offset'>
       <div className='section-heading'>
-        <h2>Popular Vehicles</h2>
+        <h2>Popüler Araçlar</h2>
         <div className='HeadingUnderline'></div>
       </div>
       <CarCards 
@@ -18,7 +18,7 @@ export default function PopularVehicles() {
         maxIndex={5}
       />
       <ButtonGreen
-        text='View All'
+        text='Daha Fazla'
         component={Link}
         to='/rent-a-car/vehicles'
         className='PopularVehiclesButton'
