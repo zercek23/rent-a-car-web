@@ -57,15 +57,14 @@ const Book = (props) => {
     const { params: { vehicleId } } = props.match;
 
     const onChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-        console.log('form', form)
-        if (form.firstDate && form.lastDate) {
-            let firstDate = new Date(form.firstDate.split('-')[0], form.firstDate.split('-')[1], form.firstDate.split('-')[2])
-            let lastDate = new Date(form.lastDate.split('-')[0], form.lastDate.split('-')[1], form.lastDate.split('-')[2])
-            if (firstDate && lastDate) {
-                console.log('sonuc', (lastDate - firstDate) / (1000 * 3600 * 24));
-            }
+        if (e.target.name === "birthDate") {
+            let birthDate = new Date(e.target.value.split('-')[0], e.target.value.split('-')[1], e.target.value.split('-')[2]);
+            console.log('birthDate',birthDate);
+            setForm({...form, birthDate});
+        } else {
+            setForm({ ...form, [e.target.name]: e.target.value });
         }
+        
     }
 
     const resetForm = (e) => {
@@ -75,16 +74,20 @@ const Book = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         setCustomer(form);
-        API.postData('/Customer/add', order).then((res) => {
+        API.postData('/Customer/add', form).then((res) => {
             let firstDate = new Date(form.firstDate.split('-')[0], form.firstDate.split('-')[1], form.firstDate.split('-')[2])
             let lastDate = new Date(form.lastDate.split('-')[0], form.lastDate.split('-')[1], form.lastDate.split('-')[2])
             let dayCount = (lastDate - firstDate) / (1000 * 3600 * 24);
-            setOrder({
-                customerID: res.data.id,
+            let body = {
+                customerID: res.data.data.id,
+                dealerID: 1,
                 vehicleID: vehicleId,
                 totalAmount: vehicle.dailyCost * dayCount,
-            })
-            API.postData('/Order/add',)
+                startingDate: firstDate,
+                endDate: lastDate
+            }
+            console.log('body',body)
+            API.postData('/Order/add', body);
             console.log(`asd`, res.data);
         })
         props.history.push("/vehicleModels");

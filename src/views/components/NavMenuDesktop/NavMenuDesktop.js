@@ -42,32 +42,22 @@ export default function NavMenuDesktop() {
           component={Link}
           to='/rent-a-car/vehicles' 
         >
-          Vehicles
+          Araçlar
         </Button>
         <Button 
           className={classes.button} 
           component={Link}
           to='/rent-a-car/about'
         >
-          About Us
+          Hakkımızda
         </Button>
         <Button 
           className={classes.button} 
           component={Link}
           to='/rent-a-car/contact'
         >
-          Contact
+          İletişim
         </Button>
-        <ButtonGreen 
-          text='Log In' 
-          onClick={handleModalOpen} 
-          className='NavDesktopBtn'
-          style={{marginLeft: '24px', width: '75px'}}
-        />
-        <LogInModal
-          open={modal}
-          handleClose={handleModalClose}
-        /> 
       </ThemeProvider>
     </Grid>
   )
