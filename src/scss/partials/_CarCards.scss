@@ -1,0 +1,43 @@
+$breakpoint-tablet: 975px;
+$breakpoint-phone: 650px;
+
+.CarCards {
+  margin: 0 auto;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (max-width: $breakpoint-phone) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// .MuiButtonBase-root.MuiButton-root {
+//   span {
+//     position: relative;
+//   }
+
+//   &:hover {
+//     span.MuiButton-endIcon.MuiButton-iconSizeMedium {
+//       animation: slide .5s ease-in;
+//     }
+//   }
+// }
+
+// @keyframes slide {
+//   from {
+//     left: 0;
+//   }
+//   50% {
+//     left: 8px;
+//   }
+//   to {
+//     left: 0;
+//   }
+// }

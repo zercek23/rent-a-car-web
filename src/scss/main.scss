@@ -1,0 +1,88 @@
+// watch command
+// sass scss:css --watch
+// docs: https://sass-lang.com/documentation/cli/dart-sass
+
+@use './partials/Nav';
+@use './partials/JumboHeader';
+@use './partials/CarCards';
+@use './partials/VehicleCard';
+@use './partials/MemberOffers';
+@use './partials//PopularLocations';
+@use './partials/Vehicles';
+@use './partials/SingleCar';
+@use './partials/AboutUs';
+@use './partials/Contact';
+@use './partials/Footer';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.top-offset {
+  position: relative;
+  top: 65px;
+}
+
+.section {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+
+  &-heading {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 auto;
+  
+    h2 {
+      margin: 0;
+      text-align: center;
+    }
+  }
+}
+
+.HeadingUnderline {
+  margin: 0 auto;
+  margin-top: 8px;
+  width: 80%;
+  height: 1px;
+  background-color: #00D60F;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-green {
+  color: #00D60F;
+}
+
+.box-shadow {
+  box-shadow: 1px 2px 4px rgba($color: #000000, $alpha: 0.16);
+}
+
+.RouterLink {
+  color: #000000;
+
+  &:visited {
+    color: #000000;
+  }
+
+  &:active {
+    color: #000000;
+  }
+
+  &:link {
+    text-decoration: none;
+  }
+}

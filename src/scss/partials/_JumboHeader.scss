@@ -1,0 +1,120 @@
+$breakpoint-phone-s: 372px;
+$breakpoint-phone: 500px;
+$breakpoint-tablet: 800px;
+$breakpoint-desktop: 1800px;
+
+.JumboHeader {
+  height: 720px;
+  width: 100%;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    height: 540px;
+  }
+
+  @media screen and (max-width: $breakpoint-phone) {
+    height: 488px;
+  }
+}
+
+.JumboImg {
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/green-must.jpg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  //justify-content: center;
+}
+
+.JumboParallel {
+  margin: 0 auto;
+  width: 500px;
+  height: 100%;
+  transform: skew(-10deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: #000000, $alpha: 0.85);
+  color: #ffffff;
+
+  @media screen and (min-width: $breakpoint-desktop) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: $breakpoint-phone) {
+    transform: skew(-5deg);
+    width: 330px;
+  }
+
+  @media screen and (max-width: $breakpoint-phone-s) {
+    transform: skew(0deg);
+    width: 290px;
+  }
+}
+
+.JumboContent {
+  transform: skew(10deg);
+  width: 80%;
+  text-align: center;
+
+  @media screen and (max-width: $breakpoint-phone) {
+    transform: skew(5deg);
+    width: 85%;
+  }
+
+  @media screen and (max-width: $breakpoint-phone-s) {
+    transform: skew(0deg);
+  }
+}
+
+.JumboHeadingText {
+  text-align: center;
+  margin-bottom: 8px;
+
+  @media screen and (max-width: $breakpoint-phone) {
+    font-size: 1.9em;
+  }
+
+  @media screen and (max-width: $breakpoint-phone-s) {
+    font-size: 1.8rem;
+  }
+}
+
+.JumboHeadingText span {
+  display: block;
+}
+
+.JumboForm {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.ParagraphLabel {
+  text-align: left;
+  margin: 16px 0 8px 0px;
+}
+
+.DateInputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.DatePicker {
+  width: '40%';
+  margin-top: '16px';
+}
+
+.DateDash {
+  margin-top: 32px;
+
+  @media screen and (max-width: $breakpoint-phone) {
+    display: none;
+  }
+}
+

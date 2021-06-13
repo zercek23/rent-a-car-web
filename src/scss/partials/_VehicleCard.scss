@@ -1,0 +1,50 @@
+.VehicleCard {
+  text-align: center;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.16s ease-in-out;
+  border-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+    // transform: translate(-2px, -4px);
+    box-shadow:
+      5px 2.8px 2.2px rgba(0, 0, 0, 0.07),
+      5px 6.7px 5.3px rgba(0, 0, 0, 0.05),
+      5px 12.5px 10px rgba(0, 0, 0, 0.042),
+      5px 22.3px 17.9px rgba(0, 0, 0, 0.035),
+      5px 41.8px 33.4px rgba(0, 0, 0, 0.028),
+      5px 100px 80px rgba(0, 0, 0, 0.02);
+  }
+}
+
+.VehicleName {
+  display: inline-block;
+  margin: 0;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  padding-left: 6px;
+  border-left: 4px solid #00D60F;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.VehicleSpecs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 8px;
+
+  &-spec {
+    display: inline-flex;
+    align-items: flex-end;
+    height: 20px;
+  }
+
+  &-p {
+    display: inline;
+    margin: 0;
+    margin-left: 5px;
+  }
+}
